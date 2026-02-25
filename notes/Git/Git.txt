@@ -1,0 +1,55 @@
+- Setup -
+git config --global user.name "Name"
+git config --global user.email "@.com"
+git config --list: shows all configs
+git --version: displays current git version
+
+- Start -
+git init: creates a new git repository
+git clone <repo-url>: copies an existing repository online
+
+- Checking status and history -
+git status: show what is changed and what is staged
+git log: shows commit history
+git diff: show changes that have not been commited yet
+
+- Saving Changes -
+git add <file>: stage a single file
+git add .: stage all files
+git stash: salve uncommited changes for later
+git stash pop: erase last stash
+git stash list: list stashes
+git commit -m "message": save all staged files
+
+- Branching -
+git branch: list branches
+git branch <branch-name>: creates a new branch
+git branch -d <branch name>: remove branch
+git checkout <branch-name>: switches branches.
+git checkout -b <branch-name>: create and switch in one command
+git switch <branch-name>: switches to and existing branch
+git switch -c <branch-name>: creates a new branch and switches to it
+git rebase -i: start an interactive rebase to edit
+P.S: checkout is a legacy command and does a few other things besides switching to a branch, so it can causes strange effects. Switch is newer and recommended.
+
+- Merging -
+git merge <branch-name>: merges another branch into the current one
+
+- Working with remote repositories -
+git remote -v: shows connected remotes
+git pull: fetches and merges changes from the remote
+git push: uploads your commits to the remote repository
+
+- Undoing things -
+git restore <file>: undo changes in a file not commited
+git reset HEAD <file>: unstage a file
+git reset --hard <commit-hash>: reset everything to a previous commit
+git revert HEAD: create a new commit that undoes the changes of the last one
+git commit --amend: fix te last commit, rewrites it
+git commit --amend -m "New commit message": amend the last commit and submit it with a better message
+git add exemplefile.txt + git commit --amend: add forgotten files into the last commit.
+
+- Explaining what is happening -
+git log: shows commit history
+git log --oneline --graph --all
+git help or git help --all

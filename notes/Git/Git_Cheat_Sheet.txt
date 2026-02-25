@@ -1,0 +1,117 @@
+- Getting Started -
+
+git init: start a new repository
+git clone <url>: clone an existing online repository
+
+- Prepare to Commit - 
+
+git add <file>: add untracked or unstaged changes
+git add .: add all untracked or unstaged changes
+git add -p (--patch): choose which parts of a file to stage. Usually you stage the first hunk you want to commit, and then commit it. Afther that, you stage the second hunk and commit it separately.
+git mv <old> <new>: rename or move and stage a file. git mv app.js main.js (rename from "app" to "main") or git mv app.js src/app.js (move ?/app to src/app).
+git rm <file>: delete a file from disk and staged
+git rm --cached <file>: delete a file from staged but not from your disk, and git starts to ignore it afterwards
+git reset <file>: unstage a file
+git reset: unstage everything
+git status: check what you added
+
+- Make Commits -
+
+git commit: commit what is o stage area
+git commit -m 'message': commit with description
+git commit -am 'message': commit all unstaged changes
+
+- Move Between Branches -
+
+git switch <name>: switch to the desired branch
+git checkout <name>: switch but old
+git switch -c <name> create a branch
+git checkout -b <name> create a branch but old
+git branch: list branches
+git branch --sort=-committerdate: list by most recently committed
+git branch -d <name>: delete a branch
+git branch -D <name>: force delete a branch
+
+- Diff Staged and Unstaged Changes -
+
+git diff HEAD: diff all staged and unstaged changes
+git diff --staged: diff just staged changes
+git diff: diff just unstaged changes
+
+- Diff Commits -
+
+git show <commit>: show diff between a commit and its parent
+git diff <commit> <commit>: diff between two commits
+git diff <commit> <file>: diff one file since a commit
+git show <commit> --stat: show a summary of a diff
+
+- Discard Your Changes -
+
+git reset <file>: remove file from staged
+git restore --staged <file>: remove file from staged
+git restore <file>: restore file from the previous commit and discard unstaged changes. Usually used with --hard
+git reset --mixed HEAD~1: moves branch back and unstages changes
+git clean: delet untracked files
+git stash: save your local unstaged changes so you can work on something else or switch branches
+git stash pop: bring back your changes so you can add and commit it
+git reset --soft HEAD~1: erase commit but not the files
+git reset --hard HEAD~1: erase commit and files
+
+- Edit Changes -
+
+git reset HEAD^: undo the most recent commit keeping your directory the same
+git rebase -i HEAD~2: squash the last 2 commits into one
+git reflog <branchname>: to find the right commit ID
+git reset --hard <commit>: undo a failed rebase
+git commit --amend -m 'message': change a commit message or add a file you forgot
+
+- Code Archaeology -
+
+git log main: look at branch's history
+git log --graph main: look at branch's history
+git log --oneline: look at branch's history
+git log <file>: shows every commit that modified a file
+git log --follow <file> shows every commit that modified a file, even if it was renamed
+git log -G banana: find every commit that added or removed some text
+git blame <file>: show who last changes each line of a file
+git status: shows what is changed and what is staged
+git log --oneline --graph --all: shows a lot
+git help: shows commands
+
+- Combine Diverged Branches -
+
+git switch banana + git rebase main: combine the branch (banana)'s commits to the branch main. The branch banana is lost, and it is brought to main branch.
+git switch main + git merge banana: combine both branchs too, but branch banana still exists, and another commit in main is created that unites both branchs.
+
+- Restore an Old File -
+
+git checkout <commit> <file>
+git restore <file> --souce <commit>: get the version of a file from another commit
+
+- Add a Remote -
+
+git remote add <name> <url>: add a remote repository
+
+- Push Your Changes
+
+git push origin main: push the main branch to the remote origin
+git push: push the current branch to its remote branch
+git push -u origin <branch name>: push a branch that you have never pushed before
+git push --tags: push tags
+git push --force-with-lease: force push
+
+- Pull Changes -
+
+git fetch origin main: fetch changes but do not change your local branches)
+git pull -rebase: fetch changes and rebase your current branch
+git pull origin main or git pull: fetch changes and then merge into the branch
+git pull origin main --allow-unrelated-histories: if the repositories as different (readme.md)
+
+- Configure Git -
+
+git config --global user.name + user.email
+git --global config alias.st status: alias for any command
+git config --list: shows all configs
+git --version: displays current git version
+
+- 

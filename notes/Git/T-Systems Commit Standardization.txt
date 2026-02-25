@@ -1,0 +1,30 @@
+Types represent the intent of the commit. Below are the types we currently use:
+
+FIX – Indicates that the committed code is solving a problem (bug fix).
+FEAT – Indicates that the committed code is introducing a new feature.
+DOCS – Indicates changes to documentation, such as updates to the repository README. (Does not include code changes.)
+STYLE – Indicates changes related to code formatting, screens, HTML, desktop application layouts, etc.
+REFACTOR – Refers to changes due to refactoring that do not alter the functionality’s behavior, or changes resulting from code review.
+BUILD – Used when modifications are made to build files and dependencies, such as pipeline files.
+PERFORMANCE – Indicates that the changes were made to improve application performance.
+TEST – Used when changes are made to tests, whether creating, modifying, or deleting tests (any type of automated test).
+CHORE – Indicates updates to build tasks, administrative configurations, packages, etc., such as adding a package to .gitignore. (Does not include code changes.)
+IMPROVEMENT – Refers to changes where there is an improvement, but not necessarily related to performance or refactoring.
+
+Initial commit 🎉 :tada:
+Version tag 🔖 :bookmark:
+New feature ✨ :sparkles:
+Task list (ideas) 🔜 :soon:
+Bug fix 🐛 :bug:
+Documentation 📚 :books:
+Tests 🧪 :test_tube:
+Adding a test ✅ :white_check_mark:
+Approval test ✔️ :heavy_check_mark:
+Work in progress 🚧 :construction:
+Configuration files 🔧 :wrench:
+Removing a dependency ➖ :heavy_minus_sign:
+Adding a dependency ➕ :heavy_plus_sign:
+Reverting changes 💥 :boom:
+Code review changes 👌 :ok_hand:
+Refactoring ♻️ :recycle:
+Move/Rename 🚚 :truck:
