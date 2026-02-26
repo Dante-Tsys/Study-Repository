@@ -1,6 +1,5 @@
 create database Lectio_V2;
 use Lectio_V2;
-
 /*
 To do:
 -Replace ENUMs with CHECK constraints
@@ -91,7 +90,8 @@ create table book_publisher (
 
 create table promotion (
 	promotion_id int primary key identity(1, 1),
-	discount_percent decimal(3, 2), 
+	name nvarchar(20) not null,
+	discount_percent decimal(5, 2), 
 	start_date datetime not null,
 	end_date datetime not null,
 	status_id int not null, --Not started, In Progress or Completed
@@ -274,7 +274,7 @@ create table department (
 create table job_position(
 	job_position_id int primary key identity(1, 1),
 	name nvarchar(150) not null,
-	level nvarchar(20) not null, --ENUM('Júnior', 'Pleno', 'Sênior')
+	level nvarchar(20) not null, --'Junior', 'Full', 'Senior'
 	base_salary decimal(10, 2) not null default 0,
 	department_id int not null,
 	constraint fk_jobposition_setorid foreign key (department_id) references department(department_id) 
@@ -291,7 +291,7 @@ create table employee (
 	phone nvarchar(20) not null unique,
 	address nvarchar(255) not null,
 	adress_number nvarchar(10) not null,
-	address_complement nvarchar(50) not null,
+	address_complement nvarchar(50),
 	district nvarchar(100) not null,
 	city nvarchar(100) not null,
 	state char(2) not null,

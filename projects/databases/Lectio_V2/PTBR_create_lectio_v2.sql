@@ -81,7 +81,8 @@ create table livro_editora (
 
 create table promocao (
     id_promocao int primary key identity(1, 1),
-    porcentagem_promocao decimal(3, 2) null,
+    nome_promocao nvarchar(20) not null,
+    porcentagem_promocao decimal(5, 2) not null,
     status_promocao nvarchar(20),
     data_inicio_promocao datetime not null,
     data_fim_promocao datetime not null
