@@ -7,6 +7,14 @@ To do:
 -Add indexes on foreign keys
 */
 
+create table status (
+    status_id int primary key identity(1, 1),
+    name nvarchar(50) not null,
+    category nvarchar(50) not null,
+    description nvarchar(255) null,
+    constraint u_status unique (name, category)
+);
+
 create table book (
 	book_id int primary key identity(1, 1),
 	isbn char(13) not null unique,
@@ -14,13 +22,15 @@ create table book (
 	edition varchar(20) not null,
 	description nvarchar(1000),
 	release_date date not null,
-	pege_count int not null,
+	page_count int not null,
 	purchase_price decimal(10, 2) not null default 0,
 	sale_price decimal(10, 2) not null default 0,
 	stock int not null default 0,
-	status nvarchar (20) null, --ENUM('Em Estoque', 'Esgotado')
 	image_path nvarchar(255) null,
-	book_path nvarchar(255) null
+	book_path nvarchar(255) null,
+	status_id int not null, --In Stock or Out of Stock
+	constraint fk_book_statusid 
+		foreign key (status_id) references status(status_id)
 );
 
 create table genre (
@@ -81,10 +91,12 @@ create table book_publisher (
 
 create table promotion (
 	promotion_id int primary key identity(1, 1),
-	discount_percent decimal(3, 2),
-	status nvarchar(20), --ENUM('Não Iniciada', 'Em andamento', 'Concluída') ainda não funcionando
+	discount_percent decimal(3, 2), 
 	start_date datetime not null,
-	end_date datetime not null
+	end_date datetime not null,
+	status_id int not null, --Not started, In Progress or Completed
+	constraint fk_promotion_statusid
+		foreign key (status_id) references status(status_id)
 );
 
 create table book_promotion (
@@ -112,24 +124,28 @@ create table user_account (
 create table collaboration (
 	collaboration_id int primary key identity(1, 1),
 	collaboration_date datetime not null,
-	type nvarchar(20) not null, --ENUM('Tradução', 'Doação') ainda não funciona
-	status nvarchar(20) not null, --ENUM('Não iniciada', 'Em andamento', 'Concluída')
+	type nvarchar(20) not null, --Translation or Donation
 	user_id int not null,
+	status_id int not null, --Not Started, In Progress, Completed
 	constraint fk_collaboration_userid 
-		foreign key (user_id) references user_account(user_id)
+		foreign key (user_id) references user_account(user_id),
+	constraint fk_collaboration_statusid
+		foreign key (status_id) references status(status_id)
 );
 
 create table user_library (
 	user_library_id int primary key identity(1, 1),
 	added_date date not null,
-	reading_status nvarchar(20) not null, --ENUM('Não aberto', 'Lendo', 'Lido')
 	current_page int not null,
 	user_id int not null,
 	book_id int not null,
+	status_id int not null, --Not Open, Reading or Read
 	constraint fk_userlibrary_userid 
 		foreign key (user_id) references user_account(user_id),
 	constraint fk_userlibrary_bookid 
 		foreign key (book_id) references book(book_id),
+	constraint fk_userlibrary_statusid
+		foreign key (status_id) references status(status_id),
 	constraint u_userlibrary unique (user_id, book_id)
 );
 
@@ -173,19 +189,23 @@ create table bankslip (
 	issue_date date not null,
 	expiration_date date not null,
 	number char(47) not null,
-	status nvarchar(20) not null --ENUM('Aguardando Pagamento', 'Pago', 'Não Pago')
+	status_id int not null --Pending, Paid or Not Paid
+	constraint fk_bankslip_statusid
+		foreign key (status_id) references status(status_id)
 );
 
 create table pix (
 	pix_id int primary key identity(1, 1),
 	payment_date datetime not null,
 	pix_key nvarchar(255) not null,
-	status nvarchar(20) not null --ENUM('Aguardando Pagamento', 'Pago', 'Não Pago')
+	status_id int not null --Pendind, Paid or Not Paid
+	constraint fk_pix_statusid
+		foreign key (status_id) references status(status_id)
 );
 
 create table payment_method (
 	payment_method_id int primary key identity(1, 1),
-	payment_type nvarchar(10) not null, --ENUM('CARTAO', 'BOLETO', 'PIX')
+	payment_type nvarchar(10) not null, --Card, Bankslip or Pix
 );
 
 create table payment_card (
@@ -222,13 +242,15 @@ create table sale (
 	sale_id int primary key identity(1, 1),
 	sale_date datetime not null,
 	total_amount decimal(10, 2) not null default 0,
-	status nvarchar(20) not null, --ENUM('Aguardando Pagamento', 'Concluída', 'Cancelada')
+	status_id int not null, --Pending, Completed, Cancelled
 	user_id int not null,
 	payment_method_id	int not null unique,
 	constraint fk_sale_userid 
 		foreign key (user_id) references user_account(user_id),
 	constraint fk_sale_paymentmethodid 
-		foreign key (payment_method_id) references payment_method(payment_method_id)
+		foreign key (payment_method_id) references payment_method(payment_method_id),
+	constraint fk_sale_statusid
+		foreign key (status_id) references status(status_id)
 );
 
 create table sale_item (
@@ -277,11 +299,13 @@ create table employee (
 	salary decimal(10, 2) not null default 0,
 	hire_date date not null,
 	termination_date date,
-	status nvarchar(20) not null, --ENUM('Ativo', 'Inativo')
 	job_position_id int not null,
 	department_id int not null,
+	status_id int not null, --Active or Inactive
 	constraint fk_employee_jobpositionid 
 		foreign key (job_position_id) references job_position(job_position_id),
 	constraint fk_employee_departmentid 
-		foreign key (department_id) references department(department_id)
+		foreign key (department_id) references department(department_id),
+	constraint fk_employee_statusid
+		foreign key (status_id) references status(status_id)
 );
