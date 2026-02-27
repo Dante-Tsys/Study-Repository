@@ -1,16 +1,20 @@
 use Lectio_V2;
 
 /* Status */
+select * from status;
+truncate table status;
 insert into status (name, category, description) values
 ('In Stock','Book','Book available'),('Out of Stock','Book','Book unavailable'),
 ('Not Started','Promotion','Promotion not started'),('In Progress','Promotion','Promotion active'),('Completed','Promotion','Promotion ended'),
 ('Not Started','Collaboration','Collab not started'),('In Progress','Collaboration','Collab active'),('Completed','Collaboration','Collab done'),
-('Not Open','Reading','Book not opened'),('Reading','Reading','Book in progress'),('Read','Reading','Book completed'),
-('Pending','Payment','Awaiting payment'),('Paid','Payment','Payment completed'),('Not Paid','Payment','Payment failed'),
+('Not Started','Reading','Book not opened'),('Reading','Reading','Book in progress'),('Finished','Reading','Book completed'),
+('Pending','Payment','Awaiting payment'),('Paid','Payment','Payment completed'),('Failed','Payment','Payment failed'),
 ('Pending','Sale','Sale pending'),('Completed','Sale','Sale completed'),('Cancelled','Sale','Sale cancelled'),
 ('Active','Employee','Employee active'),('Inactive','Employee','Employee inactive');
 
 /* Genre */
+select * from genre;
+truncate table genre;
 insert into genre (name,image_path,description) values
 ('Fantasy','/img/genre/fantasy.jpg','Magic and mythical worlds'),
 ('Sci-Fi','/img/genre/scifi.jpg','Futuristic science'),
@@ -24,6 +28,8 @@ insert into genre (name,image_path,description) values
 ('Historical','/img/genre/historical.jpg','Past events');
 
 /* Author */
+select * from author;
+truncate table author;
 insert into author (name,image_path,description) values
 ('Lucas Andrade','/img/authors/lucas.jpg','Brazilian fantasy author'),
 ('Marina Costa','/img/authors/marina.jpg','Sci-fi specialist'),
@@ -52,19 +58,23 @@ insert into author (name,image_path,description) values
 ('Leonardo Farias','/img/authors/leonardo.jpg','Suspense and thriller novelist');
 
 /* Publisher */
+select * from publisher;
+truncate table publisher;
 insert into publisher (name,address,phone,email,cnpj) values
-('Editora Atlas','Rua A, 100','11911111111','contato@atlas.com','12345678000101'),
-('Editora Nova Era','Rua B, 200','11922222222','contato@novaera.com','12345678000102'),
-('Editora Horizonte','Rua C, 300','11933333333','contato@horizonte.com','12345678000103'),
-('Editora Prisma','Rua D, 400','11944444444','contato@prisma.com','12345678000104'),
-('Editora Aurora','Rua E, 500','11955555555','contato@aurora.com','12345678000105'),
-('Editora Cosmos','Rua F, 600','11966666666','contato@cosmos.com','12345678000106'),
-('Editora Nexus','Rua G, 700','11977777777','contato@nexus.com','12345678000107'),
-('Editora Alfa','Rua H, 800','11988888888','contato@alfa.com','12345678000108'),
-('Editora Beta','Rua I, 900','11999999999','contato@beta.com','12345678000109'),
-('Editora Omega','Rua J, 1000','11900000000','contato@omega.com','12345678000110');
+('Atlas Publisher','Rua A, 100','11911111111','contato@atlas.com','12345678000101'),
+('New Age Publisher','Rua B, 200','11922222222','contato@novaera.com','12345678000102'),
+('Horizon Publisher','Rua C, 300','11933333333','contato@horizonte.com','12345678000103'),
+('Prisma Publisher','Rua D, 400','11944444444','contato@prisma.com','12345678000104'),
+('Aurora Publisher','Rua E, 500','11955555555','contato@aurora.com','12345678000105'),
+('Cosmos Publisher','Rua F, 600','11966666666','contato@cosmos.com','12345678000106'),
+('Nexus Publisher','Rua G, 700','11977777777','contato@nexus.com','12345678000107'),
+('Alfa Publisher','Rua H, 800','11988888888','contato@alfa.com','12345678000108'),
+('Beta Publisher','Rua I, 900','11999999999','contato@beta.com','12345678000109'),
+('Omega Publisher','Rua J, 1000','11900000000','contato@omega.com','12345678000110');
 
 /* Book */
+select * from book;
+truncate table book;
 insert into book (isbn,title,edition,description,release_date,page_count,purchase_price,sale_price,stock,image_path,book_path,status_id) values
 ('9780000000001','Shadow Empire','1st','Empire collapse','2019-01-01',400,20,40,10,'/img/books/1.jpg','/books/1.pdf',1),
 ('9780000000002','Digital Mind','1st','AI awakening','2020-02-10',320,18,36,5,'/img/books/2.jpg','/books/2.pdf',1),
@@ -118,13 +128,26 @@ insert into book (isbn,title,edition,description,release_date,page_count,purchas
 ('9780000000050','Battle Legacy','Collector','Legacy of war','2015-10-30',640,34,68,2,'/img/books/50.jpg','/books/50.pdf',1);
 
 /* Book_Genre */
+select * from book_genre;
+truncate table book_genre;
 insert into book_genre (book_id, genre_id) values
-(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),
-(11,1),(12,2),(13,3),(14,4),(15,5),(16,6),(17,7),(18,8),(19,9),(20,10),
-(21,1),(22,2),(23,3),(24,4),(25,5),(26,6),(27,7),(28,8),(29,9),(30,10),
-(31,1),(32,2),(33,3),(34,4),(35,5),(36,6),(37,7),(38,8),(39,9),(40,10),
-(41,1),(42,2),(43,3),(44,4),(45,5),(46,6),(47,7),(48,8),(49,9),(50,10);
+(1,3),(1,7),(1,10),(2,1),(2,6),(2,9),(3,2),(3,5),(3,8),(4,4),(4,9),(4,1),
+(5,7),(5,2),(5,6),(6,10),(6,3),(6,8),(7,5),(7,1),(7,9),(8,6),(8,4),(8,2),
+(9,8),(9,3),(9,7),(10,2),(10,9),(10,5),(11,1),(11,8),(11,4),(12,6),(12,10),(12,3),
+(13,9),(13,2),(13,7),(14,4),(14,1),(14,8),(15,5),(15,9),(15,3),(16,7),(16,2),(16,10),
+(17,8),(17,6),(17,1),(18,3),(18,5),(18,9),(19,2),(19,10),(19,4),(20,6),(20,8),(20,1),
+(21,9),(21,3),(21,7),(22,4),(22,6),(22,10),(23,1),(23,5),(23,8),(24,7),(24,2),(24,9),
+(25,3),(25,6),(25,10),(26,8),(26,4),(26,1),(27,5),(27,9),(27,2),(28,10),(28,7),(28,3),
+(29,6),(29,1),(29,8),(30,4),(30,9),(30,5),(31,2),(31,7),(31,10),(32,8),(32,3),(32,6),
+(33,1),(33,4),(33,9),(34,5),(34,10),(34,2),(35,7),(35,8),(35,3),(36,6),(36,1),(36,4),
+(37,9),(37,5),(37,2),(38,10),(38,6),(38,8),(39,3),(39,7),(39,1),(40,4),(40,2),(40,9),
+(41,8),(41,5),(41,10),(42,1),(42,6),(42,3),(43,7),(43,9),(43,4),(44,2),(44,8),(44,5),
+(45,10),(45,3),(45,6),(46,9),(46,1),(46,7),(47,4),(47,10),(47,8),(48,5),(48,2),(48,6),
+(49,3),(49,9),(49,1),(50,7),(50,4),(50,10);
+
 /* Book_Author */
+select * from book_author;
+truncate table book_author;
 insert into book_author (book_id,author_id) values
 (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),
 (11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),
@@ -132,15 +155,20 @@ insert into book_author (book_id,author_id) values
 (26,1),(27,2),(28,3),(29,4),(30,5),(31,6),(32,7),(33,8),(34,9),(35,10),
 (36,11),(37,12),(38,13),(39,14),(40,15),(41,16),(42,17),(43,18),(44,19),(45,20),
 (46,21),(47,22),(48,23),(49,24),(50,25);
+
 /* Book_Publisher */
-insert into book_publisher (book_id, publisher_id) values
-(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),
-(11,1),(12,2),(13,3),(14,4),(15,5),(16,6),(17,7),(18,8),(19,9),(20,10),
-(21,1),(22,2),(23,3),(24,4),(25,5),(26,6),(27,7),(28,8),(29,9),(30,10),
-(31,1),(32,2),(33,3),(34,4),(35,5),(36,6),(37,7),(38,8),(39,9),(40,10),
-(41,1),(42,2),(43,3),(44,4),(45,5),(46,6),(47,7),(48,8),(49,9),(50,10);
+select * from book_publisher;
+truncate table book_publisher;
+insert into book_publisher (book_id, publisher_id) VALUES
+(1,7),(2,3),(3,9),(4,1),(5,6),(6,2),(7,10),(8,4),(9,8),(10,5),
+(11,2),(12,7),(13,1),(14,9),(15,4),(16,6),(17,3),(18,8),(19,10),(20,5),
+(21,6),(22,1),(23,7),(24,3),(25,9),(26,4),(27,2),(28,8),(29,5),(30,10),
+(31,3),(32,6),(33,1),(34,7),(35,4),(36,9),(37,2),(38,5),(39,8),(40,10),
+(41,1),(42,4),(43,6),(44,3),(45,9),(46,7),(47,5),(48,2),(49,10),(50,8);
 
 /* Promotion */
+select * from promotion;
+truncate table promotion;
 insert into promotion (name,discount_percent,start_date,end_date,status_id) values
 ('Summer Sale',10,'2025-01-01','2025-03-31',1), ('Winter Sale',15,'2025-06-01','2025-08-31',1),
 ('Black Friday',40,'2025-11-25','2025-11-30',1), ('Cyber Monday',35,'2025-12-01','2025-12-02',1),
@@ -149,9 +177,19 @@ insert into promotion (name,discount_percent,start_date,end_date,status_id) valu
 ('Clearance',50,'2025-09-01','2025-09-30',1), ('Anniversary',30,'2025-10-10','2025-10-15',1);
 
 /* Book_Promotion */
-insert into book_promotion (book_id,promotion_id) values (1,1);
+select * from book_promotion;
+truncate table book_promotion;
+INSERT INTO book_promotion (book_id, promotion_id) VALUES
+(2,5), (7,1), (12,9), (25,3), (41,10), 
+(18,6), (33,2), (5,8), (29,4), (14,7), 
+(46,1), (9,5), (38,9), (21,3),(50,6), 
+(1,2), (27,8), (35,4), (16,10), (44,7),
+(6,1), (31,5), (48,9), (11,6), (23,2), 
+(39,8), (4,3), (28,10), (19,4), (42,7);
 
 /* Users */
+select * from user_account;
+truncate table user_account;
 insert into user_account (name,birth_date,gender,cpf,email,phone,password_hash) values
 ('João Silva','1990-01-01','M','11111111111','joao@email.com','11911110001','hash1'),
 ('Maria Souza','1992-02-02','F','22222222222','maria@email.com','11911110002','hash2'),
@@ -165,6 +203,8 @@ insert into user_account (name,birth_date,gender,cpf,email,phone,password_hash) 
 ('Patricia Melo','1997-10-10','F','00000000000','patricia@email.com','11911110010','hash10');
 
 /* User Library */
+select * from user_library;
+truncate table user_library;
 insert into user_library (added_date,current_page,user_id,book_id,status_id) values
 ('2025-01-01',0,1,1,9),('2025-01-02',120,1,11,10),('2025-01-03',400,1,21,11),
 ('2025-01-04',50,2,2,10),('2025-01-05',0,2,12,9),('2025-01-06',320,2,22,11),
@@ -175,22 +215,31 @@ insert into user_library (added_date,current_page,user_id,book_id,status_id) val
 ('2025-01-19',75,7,7,10),('2025-01-20',290,7,17,11),('2025-01-21',0,7,27,9),
 ('2025-01-22',0,8,8,9),('2025-01-23',180,8,18,10),('2025-01-24',420,8,28,11),
 ('2025-01-25',200,9,9,10),('2025-01-26',0,9,19,9),('2025-01-27',380,9,29,11),
-('2025-01-28',600,10,10,11),('2025-01-29',0,10,20,9),('2025-01-30',250,10,30,10);
+('2025-01-28',600,10,10,11),('2025-01-29',0,10,20,9),('2025-01-30',250,10,30,10),
+('2025-01-31',0,1,31,9),('2025-02-01',140,1,32,10),('2025-02-02',390,1,33,11),
+('2025-02-03',220,2,34,10),('2025-02-04',0,2,35,9),('2025-02-05',410,2,36,11),
+('2025-02-06',75,3,37,10),('2025-02-07',0,3,38,9),('2025-02-08',305,3,39,11),
+('2025-02-09',180,4,40,10),('2025-02-10',0,4,41,9),('2025-02-11',520,4,42,11),
+('2025-02-12',260,5,43,10),('2025-02-13',0,5,44,9),('2025-02-14',340,5,45,11),
+('2025-02-15',0,6,46,9),('2025-02-16',195,6,47,10),('2025-02-17',410,6,48,11),
+('2025-02-18',130,7,49,10),('2025-02-19',0,7,50,9),('2025-02-20',285,7,1,11),
+('2025-02-21',0,8,2,9),('2025-02-22',165,8,3,10),('2025-02-23',375,8,4,11),
+('2025-02-24',90,9,5,10),('2025-02-25',0,9,6,9),('2025-02-26',430,9,7,11),
+('2025-02-27',210,10,8,10),('2025-02-28',0,10,9,9),('2025-03-01',390,10,10,11);
 
 /* Wishlist */
-insert into whishlist (user_id,book_id) values
-(1,2),(1,12),(1,22),(1,32),(1,42),
-(2,3),(2,13),(2,23),(2,33),(2,43),
-(3,4),(3,14),(3,24),(3,34),(3,44),
-(4,5),(4,15),(4,25),(4,35),(4,45),
-(5,6),(5,16),(5,26),(5,36),(5,46),
-(6,7),(6,17),(6,27),(6,37),(6,47),
-(7,8),(7,18),(7,28),(7,38),(7,48),
-(8,9),(8,19),(8,29),(8,39),(8,49),
-(9,10),(9,20),(9,30),(9,40),(9,50),
-(10,1),(10,11),(10,21),(10,31),(10,41);
+select * from whishlist;
+truncate table wishlist;
+insert into whishlist (user_id, book_id) VALUES
+(1,4),(1,19),(1,45),(2,8),(2,17),(2,36),(2,41),
+(3,10),(3,22),(3,47),(4,3),(4,26),(4,38),(4,49),
+(5,1),(5,14),(5,28),(5,40),(6,7),(6,18),(6,34),(6,50),
+(7,5),(7,23),(7,31),(7,44),(8,9),(8,20),(8,32),(8,46),
+(9,2),(9,13),(9,27),(9,48),(10,6),(10,15),(10,29),(10,37),(10,43),(10,50);
 
 /* Review */
+select * from review;
+truncate table review;
 insert into review (rating,comment,user_id,book_id) values
 (5,'Excellent book',1,1),(4,'Very good',2,2),(3,'Average',3,3),(5,'Loved it',4,4),(2,'Not great',5,5),
 (5,'Amazing',6,6),(4,'Good read',7,7),(3,'Okay',8,8),(5,'Masterpiece',9,9),(4,'Very interesting',10,10),
@@ -198,11 +247,15 @@ insert into review (rating,comment,user_id,book_id) values
 (5,'Highly recommend',6,16),(4,'Well written',7,17),(3,'It was fine',8,18),(5,'One of my favorites',9,19),(4,'Very entertaining',10,20);
 
 /* Collaboration */
+select * from collaboration;
+truncate table collaboration;
 insert into collaboration (collaboration_date,type,user_id,status_id) values
 ('2025-01-01','Translation',1,6),('2025-01-02','Donation',2,7),('2025-01-03','Translation',3,8),('2025-01-04','Donation',4,6),('2025-01-05','Translation',5,7),
 ('2025-01-06','Donation',6,8),('2025-01-07','Translation',7,6),('2025-01-08','Donation',8,7),('2025-01-09','Translation',9,8),('2025-01-10','Donation',10,7);
 
 /* Card */
+select * from card;
+truncate table card;
 insert into card (number,cardholder,expiration_date,cvv,user_id) values
 ('4111111111111111','João Silva','2028-01-01','123',1),('4111111111111112','Maria Souza','2028-02-01','124',2),
 ('4111111111111113','Carlos Lima','2028-03-01','125',3),('4111111111111114','Ana Costa','2028-04-01','126',4),
@@ -211,6 +264,8 @@ insert into card (number,cardholder,expiration_date,cvv,user_id) values
 ('4111111111111119','Rafael Teixeira','2028-09-01','131',9),('4111111111111120','Patricia Melo','2028-10-01','132',10);
 
 /* Bankslip */
+select * from bankslip;
+truncate table bankslip;
 insert into bankslip (issue_date,expiration_date,number,status_id) values
 ('2025-01-01','2025-01-10','00000000000000000000000000000000000000000000001',12),
 ('2025-01-02','2025-01-11','00000000000000000000000000000000000000000000002',13),
@@ -224,6 +279,8 @@ insert into bankslip (issue_date,expiration_date,number,status_id) values
 ('2025-01-10','2025-01-19','00000000000000000000000000000000000000000000010',13);
 
 /* Pix */
+select * from pix;
+truncate table pix;
 insert into pix (payment_date,pix_key,status_id) values
 ('2025-01-01','nofunwuipbiybwONETBNE',13),('2025-01-02','pqlksdnfhytrgfhjdiwuyhdjsio',13),('2025-01-03','umjihyutrfdcfvgbhnm',12),
 ('2025-01-04','boinrauoernabuonu9g',14),('2025-01-05','lkjniuhbgfcdesdxcfghjkl',13),('2025-01-06','mkibrszhctesrcvkyrsdesrgcghvjhbljnop',12),
@@ -231,35 +288,53 @@ insert into pix (payment_date,pix_key,status_id) values
 ('2025-01-10','aeiubnviabeprbvpbBR',13);
 
 /* Payment Method */
+select * from payment_method;
+truncate table paymenth_method;
 insert into payment_method (payment_type) values
 ('Card'),('Card'),('Card'),('Card'),('Bankslip'),('Bankslip'),('Pix'),('Pix'),('Pix'),('Card');
 
 /* Payment Card */
+select * from payment_card;
+truncate table payment_card;
 insert into payment_card (payment_method_id,card_id) values (1,1),(2,2),(3,3),(4,4),(10,5);
 /* Payment Bankslip */
+select * from payment_bankslip;
+truncate table payment_bankslip;
 insert into payment_bankslip (payment_method_id,bankslip_id) values (5,1),(6,2);
 /* Payment Pix */
+select * from payment_pix;
+truncate table payent_pix;
 insert into payment_pix (payment_method_id,pix_id) values (7,1),(8,2),(9,3);
 
 /* Sale */
+select * from sale;
+truncate table sale;
 insert into sale (sale_date,total_amount,status_id,user_id,payment_method_id) values
 ('2025-02-01',40,16,1,1),('2025-02-02',36,16,2,2),('2025-02-03',30,15,3,3),('2025-02-04',34,16,4,4),('2025-02-05',32,17,5,5),
 ('2025-02-06',50,16,6,6),('2025-02-07',28,15,7,7),('2025-02-08',44,16,8,8),('2025-02-09',42,16,9,9),('2025-02-10',60,16,10,10);
 
 /* Sale Item */
+select * from sale_item;
+truncate table sale_item;
 insert into sale_item (quantity,unit_price,book_id,sale_id) values
 (1,40,1,1),(1,36,2,2),(1,30,3,3),(1,34,4,4),(1,32,5,5),(1,50,6,6),(1,28,7,7),(1,44,8,8),(1,42,9,9),(1,60,10,10);
 
 /* Department */
+select * from department;
+truncate table department;
 insert into department (name) values
 ('Administration'),('Sales'),('IT'),('HR'),('Finance'),('Support'),('Logistics'),('Marketing'),('Legal'),('Operations');
 
 /* Job Position */
+select * from job_position;
+truncate table job_position;
 insert into job_position (name,level,base_salary,department_id) values
 ('Assistant','Junior',2000,1),('Seller','Junior',2200,2),('Developer','Full',5000,3),('HR Analyst','Full',4000,4),('Accountant','Full',4500,5),
 ('Support Tech','Junior',2500,6),('Coordinator','Senior',6000,7),('Manager','Senior',8000,8),('Lawyer','Senior',7000,9),('Director','Senior',12000,10);
 
 /* Employee */
+select * from employee;
+truncate table employee;
 insert into employee (full_name,cpf,rg,birth_date,gender,email,phone,address,adress_number,address_complement,district,city,state,cep,salary,hire_date,termination_date,job_position_id,department_id,status_id) values
 ('Employee One','10101010101','RG1','1990-01-01','M','emp1@email.com','11800000001','Street A','10','Apt 1','Center','São Paulo','SP','01000000',2000,'2020-01-01',null,1,1,18),
 ('Employee Two','20202020202','RG2','1991-02-02','F','emp2@email.com','11800000002','Street B','20','Apt 2','Center','São Paulo','SP','01000001',2200,'2020-02-01',null,2,2,18),
