@@ -1,0 +1,139 @@
+-- data query (dql)
+select column from table;
+select * from table;
+select distinct column from table;
+select top 10 * from table;
+select * from table order by column desc;
+select * from table where condition;
+select * from table group by column;
+select * from table having condition;
+
+-- data manipulation (dml)
+insert into table (col1, col2)
+values (value1, value2);
+insert into table
+select * from another_table;
+update table
+set column = value
+where condition;
+delete from table
+where condition;
+merge target_table as t
+using source_table as s
+on t.id = s.id
+when matched then
+    update set t.name = s.name
+when not matched then
+    insert (id, name)
+    values (s.id, s.name);
+
+-- data definition (ddl)
+create database dbname;
+
+create table table_name (
+    id int primary key,
+    name varchar(100),
+    created_at datetime
+);
+
+create index idx_name
+on table_name(name);
+
+create view view_name
+as
+select * from table_name;
+
+create procedure proc_name
+as
+select * from table_name;
+
+create function func_name()
+returns int
+as
+begin
+    return 1;
+end;
+
+create trigger trigger_name
+on table
+after insert
+as
+begin
+    print 'inserted';
+end;
+
+-- alter commands
+alter table table_name
+add column_name int;
+alter table table_name
+alter column column_name varchar(200);
+alter table table_name
+drop column column_name;
+alter database dbname
+set read_only;
+
+-- drop commands
+drop database dbname;
+drop table table_name;
+drop index idx_name on table_name;
+drop view view_name;
+drop procedure proc_name;
+drop function func_name;
+drop trigger trigger_name;
+
+-- truncate
+truncate table table_name;
+
+-- constraints
+primary key;
+foreign key;
+unique;
+check;
+default;
+not null;
+
+-- joins
+select *
+from a
+inner join b
+on a.id = b.id;
+
+select *
+from a
+left join b
+on a.id = b.id;
+
+select *
+from a
+right join b
+on a.id = b.id;
+
+select *
+from a
+full outer join b
+on a.id = b.id;
+
+select *
+from a
+cross join b;
+
+-- transactions
+begin transaction;
+commit;
+rollback;
+save transaction savepoint_name;
+
+-- security
+create login login_name
+with password = 'password';
+create user user_name
+for login login_name;
+grant select on table to user_name;
+revoke select on table from user_name;
+deny select on table to user_name;
+
+-- system commands
+use database_name;
+exec procedure_name;
+exec sp_help table_name;
+exec sp_who;
