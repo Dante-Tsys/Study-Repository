@@ -1,5 +1,10 @@
+/* 
+Dante Accinelli Primon, Computer Engineering, 2026
+*/
+
 create database Lectio_V2;
 use Lectio_V2;
+
 /*
 To do:
 -Replace ENUMs with CHECK constraints

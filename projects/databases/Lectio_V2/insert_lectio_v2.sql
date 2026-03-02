@@ -1,8 +1,25 @@
+/* 
+Dante Accinelli Primon, Computer Engineering, 2026
+
+Contents of this database:
+-19 satus
+-10 genres
+-25 authors
+-10 publishers
+-100 books
+-10 promotions
+-10 users
+-50 reviews
+-10 cards
+-10 bankslips
+-10 pix
+- 10 sales
+*/
+
 use Lectio_V2;
 
 /* Status */
 select * from status;
-truncate table status;
 insert into status (name, category, description) values
 ('In Stock','Book','Book available'),('Out of Stock','Book','Book unavailable'),
 ('Not Started','Promotion','Promotion not started'),('In Progress','Promotion','Promotion active'),('Completed','Promotion','Promotion ended'),
@@ -14,7 +31,6 @@ insert into status (name, category, description) values
 
 /* Genre */
 select * from genre;
-truncate table genre;
 insert into genre (name,image_path,description) values
 ('Fantasy','/img/genre/fantasy.jpg','Magic and mythical worlds'),
 ('Sci-Fi','/img/genre/scifi.jpg','Futuristic science'),
@@ -29,37 +45,35 @@ insert into genre (name,image_path,description) values
 
 /* Author */
 select * from author;
-truncate table author;
 insert into author (name,image_path,description) values
-('Lucas Andrade','/img/authors/lucas.jpg','Brazilian fantasy author'),
-('Marina Costa','/img/authors/marina.jpg','Sci-fi specialist'),
-('Pedro Oliveira','/img/authors/pedro.jpg','Mystery writer'),
-('Ana Martins','/img/authors/ana.jpg','Romance novelist'),
-('Rafael Souza','/img/authors/rafael.jpg','Horror creator'),
-('Juliana Lima','/img/authors/juliana.jpg','Adventure storyteller'),
-('Carlos Ferreira','/img/authors/carlos.jpg','Drama author'),
-('Fernanda Alves','/img/authors/fernanda.jpg','Thriller expert'),
-('Bruno Ribeiro','/img/authors/bruno.jpg','Cyberpunk writer'),
-('Patricia Gomes','/img/authors/patricia.jpg','Historical fiction'),
-('Gabriel Barbosa','/img/authors/gabriel.jpg','Dark fantasy specialist'),
-('Camila Fernandes','/img/authors/camila.jpg','Romantic drama writer'),
-('Thiago Carvalho','/img/authors/thiago.jpg','Science fiction novelist'),
-('Beatriz Rocha','/img/authors/beatriz.jpg','Mystery and crime author'),
-('Eduardo Mendes','/img/authors/eduardo.jpg','Psychological thriller writer'),
-('Larissa Teixeira','/img/authors/larissa.jpg','Young adult fiction author'),
-('Felipe Araujo','/img/authors/felipe.jpg','Adventure and action writer'),
-('Renata Correia','/img/authors/renata.jpg','Contemporary fiction novelist'),
-('Gustavo Nogueira','/img/authors/gustavo.jpg','Cyberpunk and dystopian author'),
-('Aline Batista','/img/authors/aline.jpg','Supernatural horror specialist'),
-('Rodrigo Freitas','/img/authors/rodrigo.jpg','Epic saga creator'),
-('Vanessa Cardoso','/img/authors/vanessa.jpg','Historical romance author'),
-('Marcelo Pacheco','/img/authors/marcelo.jpg','Philosophical fiction writer'),
-('Tatiane Duarte','/img/authors/tatiane.jpg','Urban fantasy author'),
-('Leonardo Farias','/img/authors/leonardo.jpg','Suspense and thriller novelist');
+('Lucas Almeida','/images/authors/lucas_almeida.jpg','Brazilian fiction author known for contemporary urban stories.'),
+('Sofia Martinez','/images/authors/sofia_martinez.jpg','Spanish novelist specializing in historical drama.'),
+('Daniel Schmidt','/images/authors/daniel_schmidt.jpg','German writer focused on psychological thrillers.'),
+('Isabella Rossi','/images/authors/isabella_rossi.jpg','Italian author of romantic and literary fiction.'),
+('James Walker','/images/authors/james_walker.jpg','British author known for crime and mystery novels.'),
+('Camila Ferreira','/images/authors/camila_ferreira.jpg','Brazilian writer exploring social and cultural themes.'),
+('Noah Dubois','/images/authors/noah_dubois.jpg','French novelist with a focus on philosophical fiction.'),
+('Olivia Johnson','/images/authors/olivia_johnson.jpg','American author of bestselling young adult novels.'),
+('Mateo Gonzalez','/images/authors/mateo_gonzalez.jpg','Argentinian author known for political fiction.'),
+('Emma Svensson','/images/authors/emma_svensson.jpg','Swedish crime writer प्रसिद्ध for Nordic noir stories.'),
+('Liam Murphy','/images/authors/liam_murphy.jpg','Irish author specializing in fantasy literature.'),
+('Chloe Bernard','/images/authors/chloe_bernard.jpg','French romance novelist with international recognition.'),
+('Gabriel Costa','/images/authors/gabriel_costa.jpg','Brazilian science fiction author exploring future societies.'),
+('Mia Novak','/images/authors/mia_novak.jpg','Croatian author focused on literary fiction.'),
+('Ethan Brown','/images/authors/ethan_brown.jpg','American thriller writer with multiple bestsellers.'),
+('Hugo Silva','/images/authors/hugo_silva.jpg','Portuguese author known for drama and suspense.'),
+('Ava Wilson','/images/authors/ava_wilson.jpg','Canadian author writing young adult fantasy series.'),
+('Leon Fischer','/images/authors/leon_fischer.jpg','German fantasy and adventure novelist.'),
+('Valentina Russo','/images/authors/valentina_russo.jpg','Italian romance and drama writer.'),
+('Benjamin Lee','/images/authors/benjamin_lee.jpg','American author of technology-focused fiction.'),
+('Julia Becker','/images/authors/julia_becker.jpg','German author writing contemporary fiction.'),
+('Rafael Mendes','/images/authors/rafael_mendes.jpg','Brazilian mystery and crime novelist.'),
+('Elena Petrova','/images/authors/elena_petrova.jpg','Russian author known for historical epics.'),
+('Nathan Clark','/images/authors/nathan_clark.jpg','British author specializing in suspense thrillers.'),
+('Sara Olsen','/images/authors/sara_olsen.jpg','Norwegian author writing literary and drama novels.');
 
 /* Publisher */
 select * from publisher;
-truncate table publisher;
 insert into publisher (name,address,phone,email,cnpj) values
 ('Atlas Publisher','Rua A, 100','11911111111','contato@atlas.com','12345678000101'),
 ('New Age Publisher','Rua B, 200','11922222222','contato@novaera.com','12345678000102'),
@@ -74,7 +88,6 @@ insert into publisher (name,address,phone,email,cnpj) values
 
 /* Book */
 select * from book;
-truncate table book;
 insert into book (isbn,title,edition,description,release_date,page_count,purchase_price,sale_price,stock,image_path,book_path,status_id) values
 ('9780000000001','Shadow Empire','1st','Empire collapse','2019-01-01',400,20,40,10,'/img/books/1.jpg','/books/1.pdf',1),
 ('9780000000002','Digital Mind','1st','AI awakening','2020-02-10',320,18,36,5,'/img/books/2.jpg','/books/2.pdf',1),
@@ -125,50 +138,124 @@ insert into book (isbn,title,edition,description,release_date,page_count,purchas
 ('9780000000047','Life Drama','1st','Emotional life','2016-07-08',290,15,30,5,'/img/books/47.jpg','/books/47.pdf',1),
 ('9780000000048','Critical Point','1st','High stakes','2023-08-19',435,23,46,8,'/img/books/48.jpg','/books/48.pdf',1),
 ('9780000000049','Future Code','1st','Programming destiny','2024-09-25',390,22,44,9,'/img/books/49.jpg','/books/49.pdf',1),
-('9780000000050','Battle Legacy','Collector','Legacy of war','2015-10-30',640,34,68,2,'/img/books/50.jpg','/books/50.pdf',1);
+('9780000000050','Battle Legacy','Collector','Legacy of war','2015-10-30',640,34,68,2,'/img/books/50.jpg','/books/50.pdf',1),
+('9780000000051','Silent Empire','1st','Hidden imperial power','2019-03-01',410,21,42,8,'/img/books/51.jpg','/books/51.pdf',1),
+('9780000000052','AI Revolt','1st','Machines fight back','2020-04-11',345,19,38,6,'/img/books/52.jpg','/books/52.pdf',1),
+('9780000000053','Missing Signal','2nd','Disappearance mystery','2018-05-21',290,16,32,0,'/img/books/53.jpg','/books/53.pdf',2),
+('9780000000054','Hearts United','1st','Unexpected romance','2021-06-14',320,18,36,7,'/img/books/54.jpg','/books/54.pdf',1),
+('9780000000055','Dark Presence','1st','Entity returns','2017-07-19',370,17,34,0,'/img/books/55.jpg','/books/55.pdf',2),
+('9780000000056','Endless Battle','3rd','War without end','2022-08-08',530,27,54,11,'/img/books/56.jpg','/books/56.pdf',1),
+('9780000000057','Shattered Mind','1st','Psychological trauma','2016-09-10',285,15,30,5,'/img/books/57.jpg','/books/57.pdf',1),
+('9780000000058','Final Countdown','1st','Time running out','2023-10-02',445,24,48,9,'/img/books/58.jpg','/books/58.pdf',1),
+('9780000000059','Digital World','1st','Virtual reality expands','2024-11-15',395,22,44,7,'/img/books/59.jpg','/books/59.pdf',1),
+('9780000000060','War Eternal','Collector','Endless war legacy','2015-12-05',650,35,70,3,'/img/books/60.jpg','/books/60.pdf',1),
+('9780000000061','Ghost Code','1st','Haunted software','2019-01-18',405,21,42,6,'/img/books/61.jpg','/books/61.pdf',1),
+('9780000000062','Neural Link','1st','Human machine merge','2020-02-27',330,18,36,5,'/img/books/62.jpg','/books/62.pdf',1),
+('9780000000063','Hidden Enemy','2nd','Enemy in shadows','2018-03-14',300,16,32,0,'/img/books/63.jpg','/books/63.pdf',2),
+('9780000000064','Love Beyond','1st','Timeless romance','2021-04-09',315,17,34,6,'/img/books/64.jpg','/books/64.pdf',1),
+('9780000000065','Fear Returns','1st','Nightmare reborn','2017-05-17',360,17,34,0,'/img/books/65.jpg','/books/65.pdf',2),
+('9780000000066','Legend Rising','3rd','Hero awakens','2022-06-25',545,28,56,12,'/img/books/66.jpg','/books/66.pdf',1),
+('9780000000067','Broken Reality','1st','Reality collapses','2016-07-30',280,15,30,4,'/img/books/67.jpg','/books/67.pdf',1),
+('9780000000068','Target Locked','1st','Mission critical','2023-08-11',460,25,50,10,'/img/books/68.jpg','/books/68.pdf',1),
+('9780000000069','Future Shock','1st','Tech changes humanity','2024-09-19',400,22,44,8,'/img/books/69.jpg','/books/69.pdf',1),
+('9780000000070','Empire Fall','Collector','Collapse of dynasty','2015-10-07',660,36,72,2,'/img/books/70.jpg','/books/70.pdf',1),
+('9780000000071','Mystic Fire','1st','Ancient flames awaken','2019-02-05',410,21,42,7,'/img/books/71.jpg','/books/71.pdf',1),
+('9780000000072','Code Runner','1st','Hacker escape','2020-03-22',340,18,36,6,'/img/books/72.jpg','/books/72.pdf',1),
+('9780000000073','Silent Witness','2nd','Only one saw truth','2018-04-10',295,16,32,0,'/img/books/73.jpg','/books/73.pdf',2),
+('9780000000074','Endless Love','1st','Love never fades','2021-05-03',310,17,34,5,'/img/books/74.jpg','/books/74.pdf',1),
+('9780000000075','Shadow Fear','1st','Fear in darkness','2017-06-12',355,17,34,0,'/img/books/75.jpg','/books/75.pdf',2),
+('9780000000076','Dragon Path','3rd','Dragon awakens','2022-07-01',550,29,58,11,'/img/books/76.jpg','/books/76.pdf',1),
+('9780000000077','Lost Identity','1st','Who am I?','2016-08-19',275,14,28,3,'/img/books/77.jpg','/books/77.pdf',1),
+('9780000000078','Critical Mission','1st','World at stake','2023-09-09',470,25,50,9,'/img/books/78.jpg','/books/78.pdf',1),
+('9780000000079','Neon Dreams','1st','City never sleeps','2024-10-28',390,22,44,6,'/img/books/79.jpg','/books/79.pdf',1),
+('9780000000080','War Legacy','Collector','Legacy continues','2015-11-16',670,37,74,2,'/img/books/80.jpg','/books/80.pdf',1),
+('9780000000081','Crystal Fire','1st','Power unleashed','2019-01-12',420,22,44,7,'/img/books/81.jpg','/books/81.pdf',1),
+('9780000000082','Digital War','1st','Cyber battlefield','2020-02-20',335,18,36,5,'/img/books/82.jpg','/books/82.pdf',1),
+('9780000000083','Unknown Truth','2nd','Truth uncovered','2018-03-18',305,16,32,0,'/img/books/83.jpg','/books/83.pdf',2),
+('9780000000084','Love Eternal','1st','Love forever','2021-04-25',325,18,36,6,'/img/books/84.jpg','/books/84.pdf',1),
+('9780000000085','Dark Secret','1st','Secret revealed','2017-05-30',365,17,34,0,'/img/books/85.jpg','/books/85.pdf',2),
+('9780000000086','Hero Legacy','3rd','Hero remembered','2022-06-12',560,30,60,10,'/img/books/86.jpg','/books/86.pdf',1),
+('9780000000087','Broken World','1st','World shattered','2016-07-21',290,15,30,4,'/img/books/87.jpg','/books/87.pdf',1),
+('9780000000088','Final Strike','1st','Last attack','2023-08-27',480,26,52,8,'/img/books/88.jpg','/books/88.pdf',1),
+('9780000000089','Future Mind','1st','Mind evolution','2024-09-12',405,22,44,9,'/img/books/89.jpg','/books/89.pdf',1),
+('9780000000090','Empire Legacy','Collector','Empire remembered','2015-10-21',680,38,76,3,'/img/books/90.jpg','/books/90.pdf',1),
+('9780000000091','Shadow Code','1st','Hidden algorithm','2019-02-14',415,21,42,6,'/img/books/91.jpg','/books/91.pdf',1),
+('9780000000092','AI Destiny','1st','AI controls fate','2020-03-03',345,19,38,5,'/img/books/92.jpg','/books/92.pdf',1),
+('9780000000093','Lost Evidence','2nd','Evidence missing','2018-04-12',300,16,32,0,'/img/books/93.jpg','/books/93.pdf',2),
+('9780000000094','Love Secret','1st','Hidden romance','2021-05-19',320,18,36,7,'/img/books/94.jpg','/books/94.pdf',1),
+('9780000000095','Night Shadow','1st','Dark follows you','2017-06-07',370,17,34,0,'/img/books/95.jpg','/books/95.pdf',2),
+('9780000000096','Legend Path','3rd','Legend continues','2022-07-15',570,30,60,12,'/img/books/96.jpg','/books/96.pdf',1),
+('9780000000097','Silent Memory','1st','Memory fades','2016-08-29',285,15,30,3,'/img/books/97.jpg','/books/97.pdf',1),
+('9780000000098','Critical System','1st','System failure','2023-09-18',490,26,52,8,'/img/books/98.jpg','/books/98.pdf',1),
+('9780000000099','Future Signal','1st','Signal from future','2024-10-06',395,22,44,7,'/img/books/99.jpg','/books/99.pdf',1),
+('9780000000100','Final Empire','Collector','Empire ends','2015-11-29',700,40,80,2,'/img/books/100.jpg','/books/100.pdf',1);
 
 /* Book_Genre */
 select * from book_genre;
-truncate table book_genre;
 insert into book_genre (book_id, genre_id) values
-(1,3),(1,7),(1,10),(2,1),(2,6),(2,9),(3,2),(3,5),(3,8),(4,4),(4,9),(4,1),
-(5,7),(5,2),(5,6),(6,10),(6,3),(6,8),(7,5),(7,1),(7,9),(8,6),(8,4),(8,2),
-(9,8),(9,3),(9,7),(10,2),(10,9),(10,5),(11,1),(11,8),(11,4),(12,6),(12,10),(12,3),
-(13,9),(13,2),(13,7),(14,4),(14,1),(14,8),(15,5),(15,9),(15,3),(16,7),(16,2),(16,10),
-(17,8),(17,6),(17,1),(18,3),(18,5),(18,9),(19,2),(19,10),(19,4),(20,6),(20,8),(20,1),
-(21,9),(21,3),(21,7),(22,4),(22,6),(22,10),(23,1),(23,5),(23,8),(24,7),(24,2),(24,9),
-(25,3),(25,6),(25,10),(26,8),(26,4),(26,1),(27,5),(27,9),(27,2),(28,10),(28,7),(28,3),
-(29,6),(29,1),(29,8),(30,4),(30,9),(30,5),(31,2),(31,7),(31,10),(32,8),(32,3),(32,6),
-(33,1),(33,4),(33,9),(34,5),(34,10),(34,2),(35,7),(35,8),(35,3),(36,6),(36,1),(36,4),
-(37,9),(37,5),(37,2),(38,10),(38,6),(38,8),(39,3),(39,7),(39,1),(40,4),(40,2),(40,9),
-(41,8),(41,5),(41,10),(42,1),(42,6),(42,3),(43,7),(43,9),(43,4),(44,2),(44,8),(44,5),
-(45,10),(45,3),(45,6),(46,9),(46,1),(46,7),(47,4),(47,10),(47,8),(48,5),(48,2),(48,6),
-(49,3),(49,9),(49,1),(50,7),(50,4),(50,10);
+(1,7),(1,2),(1,9),(2,4),(2,1),(2,8),(3,6),(3,10),(3,3),(4,5),(4,9),(4,2),
+(5,8),(5,4),(5,1),(6,3),(6,7),(6,10),(7,2),(7,6),(7,9),(8,1),(8,5),(8,8),
+(9,10),(9,4),(9,7),(10,3),(10,6),(10,1),(11,9),(11,2),(11,5),(12,8),(12,10),(12,4),
+(13,1),(13,7),(13,3),(14,6),(14,9),(14,2),(15,4),(15,8),(15,10),(16,5),(16,1),(16,7),
+(17,3),(17,6),(17,9),(18,10),(18,2),(18,5),(19,7),(19,4),(19,8),(20,1),(20,3),(20,6),
+(21,9),(21,5),(21,2),(22,8),(22,4),(22,10),(23,6),(23,1),(23,7),(24,2),(24,9),(24,3),
+(25,4),(25,8),(25,5),(26,10),(26,6),(26,2),(27,1),(27,7),(27,9),(28,3),(28,5),(28,8),
+(29,6),(29,4),(29,10),(30,2),(30,1),(30,7),(31,5),(31,9),(31,3),(32,8),(32,6),(32,4),
+(33,10),(33,2),(33,1),(34,7),(34,5),(34,9),(35,3),(35,8),(35,6),(36,4),(36,10),(36,2),
+(37,9),(37,1),(37,7),(38,5),(38,3),(38,8),(39,6),(39,2),(39,10),(40,4),(40,9),(40,1),
+(41,7),(41,5),(41,3),(42,8),(42,10),(42,6),(43,2),(43,4),(43,9),(44,1),(44,7),(44,5),
+(45,10),(45,3),(45,8),(46,6),(46,2),(46,4),(47,9),(47,1),(47,7),(48,5),(48,10),(48,3),
+(49,8),(49,6),(49,2),(50,4),(50,9),(50,1),(51,7),(51,3),(51,5),(52,10),(52,6),(52,8),
+(53,2),(53,4),(53,9),(54,1),(54,7),(54,10),(55,5),(55,3),(55,6),(56,8),(56,2),(56,4),
+(57,9),(57,1),(57,7),(58,3),(58,5),(58,10),(59,6),(59,8),(59,2),(60,4),(60,9),(60,1),
+(61,7),(61,3),(61,5),(62,10),(62,6),(62,8),(63,2),(63,4),(63,9),(64,1),(64,7),(64,10),
+(65,5),(65,3),(65,6),(66,8),(66,2),(66,4),(67,9),(67,1),(67,7),(68,3),(68,5),(68,10),
+(69,6),(69,8),(69,2),(70,4),(70,9),(70,1),(71,7),(71,3),(71,5),(72,10),(72,6),(72,8),
+(73,2),(73,4),(73,9),(74,1),(74,7),(74,10),(75,5),(75,3),(75,6),(76,8),(76,2),(76,4),
+(77,9),(77,1),(77,7),(78,3),(78,5),(78,10),(79,6),(79,8),(79,2),(80,4),(80,9),(80,1),
+(81,7),(81,3),(81,5),(82,10),(82,6),(82,8),(83,2),(83,4),(83,9),(84,1),(84,7),(84,10),
+(85,5),(85,3),(85,6),(86,8),(86,2),(86,4),(87,9),(87,1),(87,7),(88,3),(88,5),(88,10),
+(89,6),(89,8),(89,2),(90,4),(90,9),(90,1),(91,7),(91,3),(91,5),(92,10),(92,6),(92,8),
+(93,2),(93,4),(93,9),(94,1),(94,7),(94,10),(95,5),(95,3),(95,6),(96,8),(96,2),(96,4),
+(97,9),(97,1),(97,7),(98,3),(98,5),(98,10),(99,6),(99,8),(99,2),(100,4),(100,9),(100,1);
 
 /* Book_Author */
 select * from book_author;
-truncate table book_author;
 insert into book_author (book_id,author_id) values
-(1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),
-(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),
-(21,21),(22,22),(23,23),(24,24),(25,25),
-(26,1),(27,2),(28,3),(29,4),(30,5),(31,6),(32,7),(33,8),(34,9),(35,10),
-(36,11),(37,12),(38,13),(39,14),(40,15),(41,16),(42,17),(43,18),(44,19),(45,20),
-(46,21),(47,22),(48,23),(49,24),(50,25);
+(1,7),(2,12),(3,3),(4,19),(5,5),(6,14),(7,9),(8,22),(9,1),(10,16),
+(11,8),(12,25),(13,4),(14,18),(15,6),(16,11),(17,20),(18,2),(19,15),(20,10),
+(21,13),(22,24),(23,17),(24,21),(25,23),(26,7),(27,12),(28,3),(29,19),(30,5),
+(31,14),(32,9),(33,22),(34,1),(35,16),(36,8),(37,25),(38,4),(39,18),(40,6),
+(41,11),(42,20),(43,2),(44,15),(45,10),(46,13),(47,24),(48,17),(49,21),(50,23),
+(51,7),(51,19),(52,12),(52,5),(53,3),(53,14),(54,19),(54,8),(55,5),(55,22),
+(56,14),(56,1),(57,9),(57,16),(58,22),(58,11),(59,1),(59,20),(60,16),(60,2),
+(61,8),(61,15),(62,25),(62,10),(63,4),(63,13),(64,18),(64,24),(65,6),(65,17),
+(66,11),(66,21),(67,20),(67,23),(68,2),(68,7),(69,15),(69,12),(70,10),(70,3),
+(71,13),(71,19),(72,24),(72,5),(73,17),(73,14),(74,21),(74,9),(75,23),(75,22),
+(76,7),(76,1),(77,12),(77,16),(78,3),(78,11),(79,19),(79,20),(80,5),(80,2),
+(81,14),(81,15),(82,9),(82,10),(83,22),(83,13),(84,1),(84,24),(85,16),(85,17),
+(86,8),(86,21),(86,4),(87,25),(87,23),(87,18),(88,4),(88,6),(88,7),
+(89,18),(89,11),(89,12),(90,6),(90,20),(90,3),(91,11),(91,2),(91,19),
+(92,20),(92,15),(92,5),(93,2),(93,10),(93,14),(94,15),(94,13),(94,9),
+(95,10),(95,24),(95,22),(96,13),(96,17),(96,1),(97,24),(97,21),(97,16),
+(98,17),(98,23),(98,8),(99,21),(99,7),(99,25),(100,23),(100,12),(100,18);
 
 /* Book_Publisher */
 select * from book_publisher;
-truncate table book_publisher;
-insert into book_publisher (book_id, publisher_id) VALUES
-(1,7),(2,3),(3,9),(4,1),(5,6),(6,2),(7,10),(8,4),(9,8),(10,5),
-(11,2),(12,7),(13,1),(14,9),(15,4),(16,6),(17,3),(18,8),(19,10),(20,5),
-(21,6),(22,1),(23,7),(24,3),(25,9),(26,4),(27,2),(28,8),(29,5),(30,10),
-(31,3),(32,6),(33,1),(34,7),(35,4),(36,9),(37,2),(38,5),(39,8),(40,10),
-(41,1),(42,4),(43,6),(44,3),(45,9),(46,7),(47,5),(48,2),(49,10),(50,8);
+insert into book_publisher (book_id, publisher_id) values
+(1,4),(2,9),(3,2),(4,7),(5,1),(6,10),(7,5),(8,3),(9,8),(10,6),
+(11,2),(12,5),(13,7),(14,1),(15,9),(16,4),(17,6),(18,10),(19,3),(20,8),
+(21,7),(22,1),(23,4),(24,9),(25,2),(26,6),(27,10),(28,5),(29,8),(30,3),
+(31,9),(32,2),(33,6),(34,10),(35,1),(36,7),(37,4),(38,8),(39,5),(40,3),
+(41,6),(42,10),(43,1),(44,7),(45,9),(46,2),(47,8),(48,4),(49,3),(50,5),
+(51,10),(52,6),(53,2),(54,8),(55,4),(56,9),(57,1),(58,7),(59,3),(60,5),
+(61,8),(62,4),(63,10),(64,6),(65,2),(66,9),(67,7),(68,3),(69,5),(70,1),
+(71,4),(72,8),(73,6),(74,2),(75,10),(76,3),(77,9),(78,5),(79,1),(80,7),
+(81,2),(82,6),(83,4),(84,10),(85,8),(86,5),(87,3),(88,9),(89,7),(90,1),
+(91,6),(92,4),(93,8),(94,2),(95,10),(96,7),(97,5),(98,1),(99,3),(100,9);
 
 /* Promotion */
 select * from promotion;
-truncate table promotion;
 insert into promotion (name,discount_percent,start_date,end_date,status_id) values
 ('Summer Sale',10,'2025-01-01','2025-03-31',1), ('Winter Sale',15,'2025-06-01','2025-08-31',1),
 ('Black Friday',40,'2025-11-25','2025-11-30',1), ('Cyber Monday',35,'2025-12-01','2025-12-02',1),
@@ -178,18 +265,15 @@ insert into promotion (name,discount_percent,start_date,end_date,status_id) valu
 
 /* Book_Promotion */
 select * from book_promotion;
-truncate table book_promotion;
-INSERT INTO book_promotion (book_id, promotion_id) VALUES
-(2,5), (7,1), (12,9), (25,3), (41,10), 
-(18,6), (33,2), (5,8), (29,4), (14,7), 
-(46,1), (9,5), (38,9), (21,3),(50,6), 
-(1,2), (27,8), (35,4), (16,10), (44,7),
-(6,1), (31,5), (48,9), (11,6), (23,2), 
-(39,8), (4,3), (28,10), (19,4), (42,7);
+insert into book_promotion (book_id, promotion_id) values
+(3,1),(7,4),(12,8),(18,9),(21,1),(25,4),(29,8),(34,9),(38,1),(42,4),
+(47,8),(51,9),(56,1),(60,4),(64,8),(69,9),(73,1),(78,4),(82,8),(87,9),
+(91,1),(95,4),(100,8),(2,9),(6,1),(11,4),(15,8),(19,9),(24,1),(28,4),
+(33,8),(37,9),(41,1),(46,4),(50,8),(54,9),(59,1),(63,4),(68,8),(72,9),
+(77,1),(81,4),(86,8),(90,9),(94,1),(99,4),(5,8),(14,9),(31,1),(66,4);
 
 /* Users */
 select * from user_account;
-truncate table user_account;
 insert into user_account (name,birth_date,gender,cpf,email,phone,password_hash) values
 ('João Silva','1990-01-01','M','11111111111','joao@email.com','11911110001','hash1'),
 ('Maria Souza','1992-02-02','F','22222222222','maria@email.com','11911110002','hash2'),
@@ -204,58 +288,54 @@ insert into user_account (name,birth_date,gender,cpf,email,phone,password_hash) 
 
 /* User Library */
 select * from user_library;
-truncate table user_library;
 insert into user_library (added_date,current_page,user_id,book_id,status_id) values
-('2025-01-01',0,1,1,9),('2025-01-02',120,1,11,10),('2025-01-03',400,1,21,11),
-('2025-01-04',50,2,2,10),('2025-01-05',0,2,12,9),('2025-01-06',320,2,22,11),
-('2025-01-07',280,3,3,11),('2025-01-08',60,3,13,10),('2025-01-09',0,3,23,9),
-('2025-01-10',120,4,4,10),('2025-01-11',310,4,14,11),('2025-01-12',0,4,24,9),
-('2025-01-13',0,5,5,9),('2025-01-14',150,5,15,10),('2025-01-15',350,5,25,11),
-('2025-01-16',300,6,6,11),('2025-01-17',0,6,16,9),('2025-01-18',200,6,26,10),
-('2025-01-19',75,7,7,10),('2025-01-20',290,7,17,11),('2025-01-21',0,7,27,9),
-('2025-01-22',0,8,8,9),('2025-01-23',180,8,18,10),('2025-01-24',420,8,28,11),
-('2025-01-25',200,9,9,10),('2025-01-26',0,9,19,9),('2025-01-27',380,9,29,11),
-('2025-01-28',600,10,10,11),('2025-01-29',0,10,20,9),('2025-01-30',250,10,30,10),
-('2025-01-31',0,1,31,9),('2025-02-01',140,1,32,10),('2025-02-02',390,1,33,11),
-('2025-02-03',220,2,34,10),('2025-02-04',0,2,35,9),('2025-02-05',410,2,36,11),
-('2025-02-06',75,3,37,10),('2025-02-07',0,3,38,9),('2025-02-08',305,3,39,11),
-('2025-02-09',180,4,40,10),('2025-02-10',0,4,41,9),('2025-02-11',520,4,42,11),
-('2025-02-12',260,5,43,10),('2025-02-13',0,5,44,9),('2025-02-14',340,5,45,11),
-('2025-02-15',0,6,46,9),('2025-02-16',195,6,47,10),('2025-02-17',410,6,48,11),
-('2025-02-18',130,7,49,10),('2025-02-19',0,7,50,9),('2025-02-20',285,7,1,11),
-('2025-02-21',0,8,2,9),('2025-02-22',165,8,3,10),('2025-02-23',375,8,4,11),
-('2025-02-24',90,9,5,10),('2025-02-25',0,9,6,9),('2025-02-26',430,9,7,11),
-('2025-02-27',210,10,8,10),('2025-02-28',0,10,9,9),('2025-03-01',390,10,10,11);
+('2026-01-05',0,1,12,9),('2026-01-06',145,1,27,10),('2026-01-07',320,1,34,11),('2026-01-08',78,1,5,10),('2026-01-09',0,1,89,9),('2026-01-10',410,1,63,11),
+('2026-01-05',0,2,44,9),('2026-01-06',210,2,18,10),('2026-01-07',380,2,72,11),('2026-01-08',95,2,9,10),('2026-01-09',0,2,51,9),('2026-01-10',290,2,26,11),
+('2026-01-05',33,3,39,10),('2026-01-06',0,3,7,9),('2026-01-07',415,3,81,11),('2026-01-08',120,3,14,10),('2026-01-09',0,3,60,9),('2026-01-10',350,3,22,11),
+('2026-01-05',0,4,50,9),('2026-01-06',188,4,3,10),('2026-01-07',275,4,47,11),('2026-01-08',66,4,91,10),('2026-01-09',0,4,36,9),('2026-01-10',402,4,74,11),
+('2026-01-05',142,5,21,10),('2026-01-06',0,5,33,9),('2026-01-07',390,5,55,11),('2026-01-08',57,5,8,10),('2026-01-09',0,5,99,9),('2026-01-10',315,5,41,11),
+('2026-01-05',0,6,46,9),('2026-01-06',201,6,2,10),('2026-01-07',430,6,68,11),('2026-01-08',88,6,25,10),('2026-01-09',0,6,79,9),('2026-01-10',360,6,16,11),
+('2026-01-05',76,7,28,10),('2026-01-06',0,7,42,9),('2026-01-07',295,7,64,11),('2026-01-08',134,7,11,10),('2026-01-09',0,7,87,9),('2026-01-10',405,7,53,11),
+('2026-01-05',0,8,41,9),('2026-01-06',167,8,6,10),('2026-01-07',320,8,97,11),('2026-01-08',49,8,19,10),('2026-01-09',0,8,70,9),('2026-01-10',385,8,30,11),
+('2026-01-05',92,9,35,10),('2026-01-06',0,9,48,9),('2026-01-07',440,9,84,11),('2026-01-08',158,9,24,10),('2026-01-09',0,9,65,9),('2026-01-10',300,9,13,11),
+('2026-01-05',0,10,8,9),('2026-01-06',175,10,52,10),('2026-01-07',410,10,90,11),('2026-01-08',61,10,37,10),('2026-01-09',0,10,100,9),('2026-01-10',355,10,45,11);
 
 /* Wishlist */
 select * from whishlist;
-truncate table wishlist;
-insert into whishlist (user_id, book_id) VALUES
-(1,4),(1,19),(1,45),(2,8),(2,17),(2,36),(2,41),
-(3,10),(3,22),(3,47),(4,3),(4,26),(4,38),(4,49),
-(5,1),(5,14),(5,28),(5,40),(6,7),(6,18),(6,34),(6,50),
-(7,5),(7,23),(7,31),(7,44),(8,9),(8,20),(8,32),(8,46),
-(9,2),(9,13),(9,27),(9,48),(10,6),(10,15),(10,29),(10,37),(10,43),(10,50);
+insert into whishlist (user_id, book_id) values
+(1,4),(1,11),(1,19),(1,26),(1,33),(1,47),(1,52),(1,68),(1,74),(1,81),(1,9),(1,95),(1,38),(1,57),(1,100),
+(2,7),(2,15),(2,22),(2,39),(2,44),(2,58),(2,63),(2,79),(2,84),(2,91),(2,3),(2,97),(2,50),(2,30),(2,66),
+(3,2),(3,18),(3,25),(3,31),(3,48),(3,53),(3,69),(3,75),(3,88),(3,94),(3,10),(3,60),(3,42),(3,82),(3,99),
+(4,6),(4,13),(4,21),(4,37),(4,46),(4,59),(4,64),(4,78),(4,83),(4,90),(4,1),(4,96),(4,54),(4,72),(4,34),
+(5,5),(5,17),(5,28),(5,35),(5,49),(5,61),(5,76),(5,80),(5,93),(5,98),(5,8),(5,41),(5,56),(5,70),(5,85),
+(6,12),(6,20),(6,29),(6,43),(6,51),(6,65),(6,71),(6,87),(6,92),(6,100),(6,14),(6,36),(6,58),(6,77),(6,96),
+(7,3),(7,16),(7,24),(7,32),(7,45),(7,55),(7,67),(7,73),(7,86),(7,91),(7,6),(7,40),(7,62),(7,84),(7,97),
+(8,1),(8,9),(8,27),(8,38),(8,52),(8,60),(8,74),(8,81),(8,95),(8,99),(8,18),(8,33),(8,47),(8,68),(8,88),
+(9,8),(9,23),(9,34),(9,41),(9,57),(9,66),(9,79),(9,85),(9,94),(9,100),(9,11),(9,26),(9,48),(9,63),(9,90),
+(10,2),(10,14),(10,30),(10,36),(10,54),(10,61),(10,72),(10,82),(10,96),(10,98),(10,5),(10,21),(10,43),(10,75),(10,87);
 
 /* Review */
 select * from review;
-truncate table review;
 insert into review (rating,comment,user_id,book_id) values
-(5,'Excellent book',1,1),(4,'Very good',2,2),(3,'Average',3,3),(5,'Loved it',4,4),(2,'Not great',5,5),
-(5,'Amazing',6,6),(4,'Good read',7,7),(3,'Okay',8,8),(5,'Masterpiece',9,9),(4,'Very interesting',10,10),
-(4,'Really enjoyed it',1,11),(5,'Fantastic sequel',2,12),(2,'Could be better',3,13),(4,'Nice story',4,14),(3,'Decent read',5,15),
-(5,'Highly recommend',6,16),(4,'Well written',7,17),(3,'It was fine',8,18),(5,'One of my favorites',9,19),(4,'Very entertaining',10,20);
+(5,'Amazing story and characters',1,4),(4,'Really enjoyable read',2,15),(3,'It was decent overall',3,22),(5,'Absolutely loved it',4,39),(2,'Not what I expected',5,44),
+(4,'Great pacing and plot',6,58),(5,'One of my favorites',7,63),(3,'Average but fine',8,79),(4,'Kept me interested',9,84),(5,'Fantastic ending',10,91),
+(1,'Did not like it',1,7),(4,'Very well written',2,18),(5,'Highly recommended',3,25),(3,'Some boring parts',4,31),(4,'Good character development',5,48),
+(5,'Excellent book',6,53),(2,'Could be better',7,69),(4,'Nice and entertaining',8,75),(5,'Loved every page',9,88),(3,'Nothing special',10,94),
+(4,'Pretty good overall',1,2),(5,'Masterpiece',2,13),(3,'Okay read',3,21),(4,'Enjoyed the journey',4,37),(5,'Very immersive',5,46),
+(2,'Not engaging enough',6,59),(4,'Solid book',7,64),(5,'Exceeded expectations',8,78),(3,'Mixed feelings',9,83),(4,'Fun to read',10,90),
+(5,'Incredible writing',1,1),(3,'Just average',2,96),(4,'Worth reading',3,54),(5,'Loved the characters',4,72),(2,'Boring at times',5,34),
+(4,'Very creative',6,5),(5,'Outstanding',7,17),(3,'It was fine',8,28),(4,'Good experience',9,35),(5,'Amazing concept',10,49),
+(4,'Really liked it',1,61),(5,'Brilliant',2,76),(3,'Not bad',3,80),(4,'Interesting plot',4,93),(5,'Excellent pacing',5,98),
+(2,'Too slow for me',6,12),(4,'Nice storytelling',7,20),(5,'Loved it a lot',8,29),(3,'Average story',9,43),(4,'Enjoyable overall',10,51);
 
 /* Collaboration */
 select * from collaboration;
-truncate table collaboration;
 insert into collaboration (collaboration_date,type,user_id,status_id) values
 ('2025-01-01','Translation',1,6),('2025-01-02','Donation',2,7),('2025-01-03','Translation',3,8),('2025-01-04','Donation',4,6),('2025-01-05','Translation',5,7),
 ('2025-01-06','Donation',6,8),('2025-01-07','Translation',7,6),('2025-01-08','Donation',8,7),('2025-01-09','Translation',9,8),('2025-01-10','Donation',10,7);
 
 /* Card */
 select * from card;
-truncate table card;
 insert into card (number,cardholder,expiration_date,cvv,user_id) values
 ('4111111111111111','João Silva','2028-01-01','123',1),('4111111111111112','Maria Souza','2028-02-01','124',2),
 ('4111111111111113','Carlos Lima','2028-03-01','125',3),('4111111111111114','Ana Costa','2028-04-01','126',4),
@@ -265,7 +345,6 @@ insert into card (number,cardholder,expiration_date,cvv,user_id) values
 
 /* Bankslip */
 select * from bankslip;
-truncate table bankslip;
 insert into bankslip (issue_date,expiration_date,number,status_id) values
 ('2025-01-01','2025-01-10','00000000000000000000000000000000000000000000001',12),
 ('2025-01-02','2025-01-11','00000000000000000000000000000000000000000000002',13),
@@ -280,7 +359,6 @@ insert into bankslip (issue_date,expiration_date,number,status_id) values
 
 /* Pix */
 select * from pix;
-truncate table pix;
 insert into pix (payment_date,pix_key,status_id) values
 ('2025-01-01','nofunwuipbiybwONETBNE',13),('2025-01-02','pqlksdnfhytrgfhjdiwuyhdjsio',13),('2025-01-03','umjihyutrfdcfvgbhnm',12),
 ('2025-01-04','boinrauoernabuonu9g',14),('2025-01-05','lkjniuhbgfcdesdxcfghjkl',13),('2025-01-06','mkibrszhctesrcvkyrsdesrgcghvjhbljnop',12),
@@ -289,60 +367,102 @@ insert into pix (payment_date,pix_key,status_id) values
 
 /* Payment Method */
 select * from payment_method;
-truncate table paymenth_method;
 insert into payment_method (payment_type) values
-('Card'),('Card'),('Card'),('Card'),('Bankslip'),('Bankslip'),('Pix'),('Pix'),('Pix'),('Card');
+('Pix'),('Card'),('Bankslip'),('Card'),('Pix'),
+('Card'),('Bankslip'),('Pix'),('Card'),('Card'),
+('Bankslip'),('Pix'),('Card'),('Pix'),('Bankslip'),
+('Card'),('Pix'),('Bankslip'),('Card'),('Pix'),
+('Card'),('Bankslip'),('Pix'),('Card'),('Bankslip'),
+('Pix'),('Card'),('Bankslip'),('Pix'),('Card');
+
 
 /* Payment Card */
 select * from payment_card;
-truncate table payment_card;
-insert into payment_card (payment_method_id,card_id) values (1,1),(2,2),(3,3),(4,4),(10,5);
+insert into payment_card (payment_method_id, card_id) values
+(2,7),(4,2),(6,10),(9,1),(10,5),
+(13,3),(16,8),(19,4),(24,9),(30,6);
+
 /* Payment Bankslip */
 select * from payment_bankslip;
-truncate table payment_bankslip;
-insert into payment_bankslip (payment_method_id,bankslip_id) values (5,1),(6,2);
+insert into payment_bankslip (payment_method_id, bankslip_id) values
+(3,4),(7,1),(11,7),(15,2),(18,9),
+(22,5),(25,3),(28,8),(29,6),(21,10);
+
 /* Payment Pix */
 select * from payment_pix;
-truncate table payent_pix;
-insert into payment_pix (payment_method_id,pix_id) values (7,1),(8,2),(9,3);
+insert into payment_pix (payment_method_id, pix_id) values
+(1,6),(5,2),(8,9),(12,1),(14,7),
+(17,3),(20,10),(23,5),(26,4),(27,8);
 
 /* Sale */
 select * from sale;
-truncate table sale;
 insert into sale (sale_date,total_amount,status_id,user_id,payment_method_id) values
-('2025-02-01',40,16,1,1),('2025-02-02',36,16,2,2),('2025-02-03',30,15,3,3),('2025-02-04',34,16,4,4),('2025-02-05',32,17,5,5),
-('2025-02-06',50,16,6,6),('2025-02-07',28,15,7,7),('2025-02-08',44,16,8,8),('2025-02-09',42,16,9,9),('2025-02-10',60,16,10,10);
+('2025-02-01',84,16,3,14),
+('2025-02-02',112,16,7,2),
+('2025-02-03',30,15,1,25),
+('2025-02-04',128,16,9,6),
+('2025-02-05',64,17,5,18),
+('2025-02-06',150,16,2,9),
+('2025-02-07',56,15,8,21),
+('2025-02-08',90,16,4,5),
+('2025-02-09',42,16,6,27),
+('2025-02-10',180,16,10,13);
+
 
 /* Sale Item */
 select * from sale_item;
-truncate table sale_item;
 insert into sale_item (quantity,unit_price,book_id,sale_id) values
-(1,40,1,1),(1,36,2,2),(1,30,3,3),(1,34,4,4),(1,32,5,5),(1,50,6,6),(1,28,7,7),(1,44,8,8),(1,42,9,9),(1,60,10,10);
+(1,40,12,1), (1,44,87,1),
+(1,36,3,2), (1,42,55,2), (1,34,91,2), (1,30,24,3), (1,64,100,4),
+(1,32,41,4), (1,32,73,4), (1,32,5,5), (1,32,62,5), (1,50,6,6),
+(1,46,88,6), (1,54,29,6), (1,28,7,7), (1,28,44,7), (1,44,8,8),
+(1,46,95,8), (1,42,9,9), (1,60,10,10), (1,54,77,10), (1,66,35,10);
 
 /* Department */
 select * from department;
-truncate table department;
 insert into department (name) values
-('Administration'),('Sales'),('IT'),('HR'),('Finance'),('Support'),('Logistics'),('Marketing'),('Legal'),('Operations');
+('Administration'),('Sales'),('IT'),('HR'),('Finance'),
+('Support'),('Logistics'),('Marketing'),('Legal'),('Operations'),
+('Procurement'), ('Quality Assurance'), ('Business Intelligence'),
+('Customer Success'), ('Security'), ('Research'),
+('Security'), ('Customer Success'), ('Business Intelligence'), ('Quality Assurance'), ('Product Management'),
+('Data Science'), ('Procurement'), ('Public Relations'), ('Training');
 
 /* Job Position */
 select * from job_position;
-truncate table job_position;
 insert into job_position (name,level,base_salary,department_id) values
 ('Assistant','Junior',2000,1),('Seller','Junior',2200,2),('Developer','Full',5000,3),('HR Analyst','Full',4000,4),('Accountant','Full',4500,5),
-('Support Tech','Junior',2500,6),('Coordinator','Senior',6000,7),('Manager','Senior',8000,8),('Lawyer','Senior',7000,9),('Director','Senior',12000,10);
+('Support Tech','Junior',2500,6),('Coordinator','Senior',6000,7),('Manager','Senior',8000,8),('Lawyer','Senior',7000,9),('Director','Senior',12000,10), ('Procurement Analyst','Full',4200,11),
+('Procurement Manager','Senior',7500,11), ('QA Analyst','Junior',2800,12), ('QA Engineer','Full',4800,12),
+('BI Analyst','Full',5200,13), ('BI Manager','Senior',8500,13), ('Customer Success Agent','Junior',2600,14),
+('Customer Success Manager','Senior',7800,14), ('Security Analyst','Full',5000,15), ('Security Manager','Senior',9000,15);
 
 /* Employee */
 select * from employee;
-truncate table employee;
 insert into employee (full_name,cpf,rg,birth_date,gender,email,phone,address,adress_number,address_complement,district,city,state,cep,salary,hire_date,termination_date,job_position_id,department_id,status_id) values
-('Employee One','10101010101','RG1','1990-01-01','M','emp1@email.com','11800000001','Street A','10','Apt 1','Center','São Paulo','SP','01000000',2000,'2020-01-01',null,1,1,18),
-('Employee Two','20202020202','RG2','1991-02-02','F','emp2@email.com','11800000002','Street B','20','Apt 2','Center','São Paulo','SP','01000001',2200,'2020-02-01',null,2,2,18),
-('Employee Three','30303030303','RG3','1992-03-03','M','emp3@email.com','11800000003','Street C','30','Apt 3','Center','São Paulo','SP','01000002',5000,'2020-03-01',null,3,3,18),
-('Employee Four','40404040404','RG4','1993-04-04','F','emp4@email.com','11800000004','Street D','40','Apt 4','Center','São Paulo','SP','01000003',4000,'2020-04-01',null,4,4,18),
-('Employee Five','50505050505','RG5','1994-05-05','M','emp5@email.com','11800000005','Street E','50','Apt 5','Center','São Paulo','SP','01000004',4500,'2020-05-01',null,5,5,18),
-('Employee Six','60606060606','RG6','1995-06-06','F','emp6@email.com','11800000006','Street F','60','Apt 6','Center','São Paulo','SP','01000005',2500,'2020-06-01',null,6,6,18),
-('Employee Seven','70707070707','RG7','1996-07-07','M','emp7@email.com','11800000007','Street G','70','Apt 7','Center','São Paulo','SP','01000006',6000,'2020-07-01',null,7,7,18),
-('Employee Eight','80808080808','RG8','1997-08-08','F','emp8@email.com','11800000008','Street H','80','Apt 8','Center','São Paulo','SP','01000007',8000,'2020-08-01',null,8,8,18),
-('Employee Nine','90909090909','RG9','1998-09-09','M','emp9@email.com','11800000009','Street I','90','Apt 9','Center','São Paulo','SP','01000008',7000,'2020-09-01',null,9,9,18),
-('Employee Ten','11111111112','RG10','1999-10-10','F','emp10@email.com','11800000010','Street J','100','Apt 10','Center','São Paulo','SP','01000009',12000,'2020-10-01',null,10,10,18);
+('Lucas Martins','12121212121','RG11','1992-02-11','M','lucas.martins@email.com','11900000011','Street K','110','Apt 11','Moema','São Paulo','SP','01000010',4200,'2021-01-15',NULL,11,11,18),
+('Fernanda Alves','13131313131','RG12','1993-03-12','F','fernanda.alves@email.com','11900000012','Street L','120','Apt 12','Moema','São Paulo','SP','01000011',7500,'2020-11-20',NULL,12,11,18),
+('Bruno Rocha','14141414141','RG13','1994-04-13','M','bruno.rocha@email.com','11900000013','Street M','130','Apt 13','Pinheiros','São Paulo','SP','01000012',2800,'2022-02-01',NULL,13,12,18),
+('Camila Freitas','15151515151','RG14','1995-05-14','F','camila.freitas@email.com','11900000014','Street N','140','Apt 14','Pinheiros','São Paulo','SP','01000013',4800,'2021-06-10',NULL,14,12,18),
+('Rafael Costa','16161616161','RG15','1991-06-15','M','rafael.costa@email.com','11900000015','Street O','150','Apt 15','Vila Mariana','São Paulo','SP','01000014',5200,'2020-09-05',NULL,15,13,18),
+('Juliana Ribeiro','17171717171','RG16','1990-07-16','F','juliana.ribeiro@email.com','11900000016','Street P','160','Apt 16','Vila Mariana','São Paulo','SP','01000015',8500,'2019-03-18',NULL,16,13,18),
+('Diego Carvalho','18181818181','RG17','1996-08-17','M','diego.carvalho@email.com','11900000017','Street Q','170','Apt 17','Itaim','São Paulo','SP','01000016',2600,'2023-01-09',NULL,17,14,18),
+('Patricia Gomes','19191919191','RG18','1992-09-18','F','patricia.gomes@email.com','11900000018','Street R','180','Apt 18','Itaim','São Paulo','SP','01000017',7800,'2020-12-01',NULL,18,14,18),
+('André Fernandes','21212121212','RG19','1989-10-19','M','andre.fernandes@email.com','11900000019','Street S','190','Apt 19','Brooklin','São Paulo','SP','01000018',5000,'2021-04-22',NULL,19,15,18),
+('Beatriz Lopes','23232323232','RG20','1993-11-20','F','beatriz.lopes@email.com','11900000020','Street T','200','Apt 20','Brooklin','São Paulo','SP','01000019',9000,'2018-08-14',NULL,20,15,18),
+('Carlos Eduardo','24242424242','RG21','1990-01-21','M','carlos.edu@email.com','11900000021','Street U','210','Apt 21','Centro','São Paulo','SP','01000020',5000,'2022-05-10',NULL,3,3,18),
+('Amanda Silva','25252525252','RG22','1994-02-22','F','amanda.silva@email.com','11900000022','Street V','220','Apt 22','Centro','São Paulo','SP','01000021',4000,'2021-07-19',NULL,4,4,18),
+('Thiago Souza','26262626262','RG23','1991-03-23','M','thiago.souza@email.com','11900000023','Street W','230','Apt 23','Centro','São Paulo','SP','01000022',6000,'2020-03-01',NULL,7,7,18),
+('Larissa Moura','27272727272','RG24','1995-04-24','F','larissa.moura@email.com','11900000024','Street X','240','Apt 24','Centro','São Paulo','SP','01000023',2200,'2023-02-10',NULL,2,2,18),
+('Marcos Lima','28282828282','RG25','1992-05-25','M','marcos.lima@email.com','11900000025','Street Y','250','Apt 25','Centro','São Paulo','SP','01000024',2500,'2022-09-14',NULL,6,6,18),
+('Vanessa Duarte','29292929292','RG26','1996-06-26','F','vanessa.duarte@email.com','11900000026','Street Z','260','Apt 26','Centro','São Paulo','SP','01000025',8000,'2020-01-11',NULL,8,8,18),
+('Felipe Barros','30303030304','RG27','1988-07-27','M','felipe.barros@email.com','11900000027','Street AA','270','Apt 27','Centro','São Paulo','SP','01000026',7000,'2019-11-11',NULL,9,9,18),
+('Renata Campos','31313131314','RG28','1993-08-28','F','renata.campos@email.com','11900000028','Street AB','280','Apt 28','Centro','São Paulo','SP','01000027',12000,'2017-06-01',NULL,10,10,18),
+('Gabriel Pinto','32323232324','RG29','1997-09-29','M','gabriel.pinto@email.com','11900000029','Street AC','290','Apt 29','Centro','São Paulo','SP','01000028',2800,'2024-01-08',NULL,13,12,18),
+('Isabela Teixeira','33333333334','RG30','1998-10-30','F','isabela.teixeira@email.com','11900000030','Street AD','300','Apt 30','Centro','São Paulo','SP','01000029',2600,'2024-03-12',NULL,17,14,18);
+
+/* To erase all data:
+use master
+drop database Lectio_V2;
+create all database again with create_lectio_v2.sql
+*/
