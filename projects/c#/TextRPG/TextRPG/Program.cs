@@ -30,19 +30,21 @@ namespace TextRPG
         static void Main(string[] args)
         {
             Console.WriteLine("=== Text RPG ===");
-            Console.WriteLine("\nEnter your player name: ");
+            Console.Write("\nEnter your player name: ");
             string name = Console.ReadLine();
             Player player = new Player(name, 100, 10); //Instantiate object player with Player constructor
 
             Console.WriteLine($"Welcome {player.Name}!\nYour Adventure Begins...");
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
 
             while (player.IsAlive())
             {
+                Console.Clear();
                 Enemy enemy = CreateRandomEnemy();
 
-                Console.WriteLine($"\nA wild {enemy.Name} appears!");
+                Console.WriteLine("------------------------------");
+                Console.WriteLine($"A wild {enemy.Name} appears!");
                 int round = 1;
 
                 while (player.IsAlive() && enemy.IsAlive())
@@ -68,8 +70,9 @@ namespace TextRPG
                     if (enemy.IsAlive())
                     {
                         enemy.AttackPlayer(player);
-                        Console.WriteLine();
                     }
+
+                    round++;
                 }
 
                 if (player.IsAlive())
@@ -78,8 +81,8 @@ namespace TextRPG
                     player.GainXP(enemy.XPReward);
 
                     Console.WriteLine("\nPress any key to continue...");
+                    Console.WriteLine("------------------------------");
                     Console.ReadKey();
-                    Console.Clear();
                 }
             }
 
