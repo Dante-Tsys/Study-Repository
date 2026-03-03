@@ -9,20 +9,29 @@ namespace TextRPG
     internal class Player
     {
         public string Name;
-        public int Health, MaxHealth, Attack;
+        public int Health, MaxHealth, Attack; //Base status
+        public int Level, XP, XPGoal; //Level status
 
-        public Player(string name)
+        public Player(string name, int maxHealth, int attack) //Player constructor
         {
             Name = name;
-            MaxHealth = 100;
+
+            Level = 1;
+            XP = 0;
+            XPGoal = 100;
+
+            MaxHealth = maxHealth;
             Health = MaxHealth;
-            Attack = 10;
+            Attack = attack;
         }
+
+        private Random random = new Random();
 
         public void AttackEnemy(Enemy enemy)
         {
-            Console.WriteLine($"{Name} attacks {enemy.Name} for {Attack} damage!");
-            enemy.TakeDamage(Attack);
+            int damage = random.Next(Attack - 3, Attack + 4);
+            Console.WriteLine($"{Name} attacks {enemy.Name} for {damage} damage!");
+            enemy.TakeDamage(damage);
         }
 
         public void TakeDamage(int damage)
@@ -35,9 +44,35 @@ namespace TextRPG
             Console.WriteLine($"{Name}'s health: {Health}/{MaxHealth}");
         }
 
-        public bool isAlive()
+        public void GainXP(int amount)
         {
-            return Health > 0;
+            XP += amount;
+            Console.WriteLine($"{Name} gained {amount} XP!");
+            Console.WriteLine($"XP: {XP}/{XPGoal}");
+
+            if (XP >= XPGoal) LevelUp();
+        }
+
+        public void LevelUp()
+        {
+            Level++;
+            XP -= XPGoal;
+            XPGoal += 50;
+
+            MaxHealth += 20;
+            Attack += 3;
+            Health = MaxHealth;
+
+            Console.WriteLine("\n--- Level Up! ---");
+            Console.WriteLine($"You are now level {Level}!");
+            Console.WriteLine("Your stats increased!");
+            Console.WriteLine("-----------------\n");
+        }
+
+        public bool IsAlive()
+        {
+            while (Health > 0) return true;
+            return false;
         }
     }
 }

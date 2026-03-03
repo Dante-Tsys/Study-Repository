@@ -9,20 +9,24 @@ namespace TextRPG
     internal class Enemy
     {
         public string Name;
-        public int Health, MaxHealth, Attack;
+        public int Health, MaxHealth, Attack, XPReward;
 
-        public Enemy (string name, int maxHealth, int attack)
+        public Enemy (string name, int maxHealth, int attack, int xpReward)
         {
             Name = name;
             MaxHealth = maxHealth;
             Health = maxHealth;
             Attack = attack;
+            XPReward = xpReward;
         }
+
+        private Random random = new Random();
 
         public void AttackPlayer(Player player)
         {
-            Console.WriteLine($"{Name} attacks {player.Name} for {Attack} damage!");
-            player.TakeDamage(Attack);
+            int damage = random.Next(Attack - 3, Attack + 4);
+            Console.WriteLine($"{Name} attacks {player.Name} for {damage} damage!");
+            player.TakeDamage(damage);
         }
 
         public void TakeDamage(int damage)
@@ -35,9 +39,10 @@ namespace TextRPG
             Console.WriteLine($"{Name}'s health: {Health}/{MaxHealth}");
         }
 
-        public bool isAlive()
+        public bool IsAlive()
         {
-            return Health > 0;
+            while (Health > 0) return true;
+            return false;
         }
     }
 }
