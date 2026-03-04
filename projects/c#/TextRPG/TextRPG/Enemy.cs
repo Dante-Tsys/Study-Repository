@@ -25,7 +25,7 @@ namespace TextRPG
         public void AttackPlayer(Player player)
         {
             int damage = random.Next(Attack - 3, Attack + 4);
-            Console.WriteLine($"{Name} attacks {player.Name} for {damage} damage!");
+            Console.WriteLine($"\n{Name} attacks {player.Name} for {damage} damage!");
             player.TakeDamage(damage);
         }
 

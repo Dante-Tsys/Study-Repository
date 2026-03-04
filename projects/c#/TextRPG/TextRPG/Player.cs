@@ -30,7 +30,7 @@ namespace TextRPG
         public void AttackEnemy(Enemy enemy)
         {
             int damage = random.Next(Attack - 3, Attack + 4);
-            Console.WriteLine($"{Name} attacks {enemy.Name} for {damage} damage!");
+            Console.WriteLine($"\n{Name} attacks {enemy.Name} for {damage} damage!");
             enemy.TakeDamage(damage);
         }
 
@@ -67,6 +67,28 @@ namespace TextRPG
             Console.WriteLine($"You are now level {Level}!");
             Console.WriteLine("Your stats increased!");
             Console.WriteLine("-----------------\n");
+        }
+
+        public void Rest()
+        {
+            int healAmount = MaxHealth/2;
+            Health += healAmount;
+
+            if (Health > MaxHealth) Health = MaxHealth;
+
+            Console.WriteLine($"\n{Name} rests and recovers health.");
+            Console.WriteLine($"Health: {Health}/{MaxHealth}");
+        }
+
+        public void ShowStats()
+        {
+            Console.WriteLine("\n=== Player Stats ===");
+            Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Level: {Level}");
+            Console.WriteLine($"XP: {XP}");
+            Console.WriteLine($"Health: {Health}");
+            Console.WriteLine($"Attack: {Attack}");
+            Console.WriteLine($"====================");
         }
 
         public bool IsAlive()
