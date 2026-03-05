@@ -19,10 +19,15 @@ namespace TextRPG
             Console.WriteLine($"{Name} slashes {player.Name} for {damage} damage!");
             player.TakeDamage(damage);
 
-            int heal = damage / 2;
-            Health += heal;
-            Console.WriteLine($"{Name} steals like and heals {heal} HP!");
-            Console.WriteLine($"{Name} Health: {Health}/{MaxHealth}");
+            int steal = random.Next(1, 101);
+
+            if (steal <= 20)
+            {
+                int heal = damage / 2;
+                Health += heal;
+                Console.WriteLine($"{Name} steals life and heals {heal} HP!");
+                Console.WriteLine($"{Name} Health: {Health}/{MaxHealth}");
+            }
         }
     }
 }

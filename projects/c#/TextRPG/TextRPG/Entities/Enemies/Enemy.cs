@@ -29,7 +29,7 @@ namespace TextRPG
             player.TakeDamage(damage);
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             Health -= damage;
 
