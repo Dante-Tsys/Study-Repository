@@ -12,7 +12,7 @@ namespace TextRPG
         public int Health, MaxHealth, Attack; //Base status
         public int Level, XP, XPGoal; //Level status
 
-        private Random random = new Random(); //Random method
+        public Random random = new Random(); //Random method
         public List<Item> Inventory = new List<Item>(); //Inventory list
 
         public Player(string name, int maxHealth, int attack) //Player constructor
