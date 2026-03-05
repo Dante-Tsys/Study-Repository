@@ -135,11 +135,11 @@ namespace TextRPG
             switch (roll)
             {
                 case 1:
-                    return new Enemy("Goblin", 30, 5, 40);
+                    return new Goblin();
                 case 2:
-                    return new Enemy("Orc", 50, 8, 70);
+                    return new Orc();
                 case 3:
-                    return new Enemy("Skeleton", 40, 6, 60);
+                    return new Skeleton();
                 default:
                     throw new Exception("Invalid enemy roll");
             }

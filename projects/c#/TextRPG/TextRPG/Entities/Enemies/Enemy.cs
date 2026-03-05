@@ -11,6 +11,8 @@ namespace TextRPG
         public string Name;
         public int Health, MaxHealth, Attack, XPReward;
 
+        private Random random = new Random();
+
         public Enemy (string name, int maxHealth, int attack, int xpReward)
         {
             Name = name;
@@ -20,9 +22,7 @@ namespace TextRPG
             XPReward = xpReward;
         }
 
-        private Random random = new Random();
-
-        public void AttackPlayer(Player player)
+        public virtual void AttackPlayer(Player player)
         {
             int damage = random.Next(Attack - 3, Attack + 4);
             Console.WriteLine($"\n{Name} attacks {player.Name} for {damage} damage!");
