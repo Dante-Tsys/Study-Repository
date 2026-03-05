@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TextRPG
 {
-    internal class Program
+    internal class Core
     {
         static Random random = new Random(); //Static Class to generate random numbers, doesn't need an instance
         static void Main(string[] args)
