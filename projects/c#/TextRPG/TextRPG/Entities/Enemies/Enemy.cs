@@ -11,7 +11,7 @@ namespace TextRPG
         public string Name;
         public int Health, MaxHealth, Attack, XPReward;
 
-        private Random random = new Random();
+        public Random random = new Random();
 
         public Enemy (string name, int maxHealth, int attack, int xpReward)
         {
