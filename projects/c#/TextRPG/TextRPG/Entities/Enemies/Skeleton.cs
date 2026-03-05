@@ -10,7 +10,19 @@ namespace TextRPG
     {
         public Skeleton() : base("Skeleton", 40, 6, 60)
         {
+        }
 
+        public override void AttackPlayer(Player player)
+        {
+            int damage = random.Next(Attack - 2, Attack + 3);
+
+            Console.WriteLine($"{Name} slashes {player.Name} for {damage} damage!");
+            player.TakeDamage(damage);
+
+            int heal = damage / 2;
+            Health += heal;
+            Console.WriteLine($"{Name} steals like and heals {heal} HP!");
+            Console.WriteLine($"{Name} Health: {Health}/{MaxHealth}");
         }
     }
 }
