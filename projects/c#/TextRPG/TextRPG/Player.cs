@@ -12,6 +12,9 @@ namespace TextRPG
         public int Health, MaxHealth, Attack; //Base status
         public int Level, XP, XPGoal; //Level status
 
+        private Random random = new Random(); //Random method
+        public List<Item> Inventory = new List<Item>(); //Inventory list
+
         public Player(string name, int maxHealth, int attack) //Player constructor
         {
             Name = name;
@@ -24,8 +27,6 @@ namespace TextRPG
             Health = MaxHealth;
             Attack = attack;
         }
-
-        private Random random = new Random();
 
         public void AttackEnemy(Enemy enemy)
         {
@@ -89,6 +90,41 @@ namespace TextRPG
             Console.WriteLine($"Health: {Health}");
             Console.WriteLine($"Attack: {Attack}");
             Console.WriteLine($"====================");
+        }
+
+        public void ShowInventory()
+        {
+            Console.WriteLine("\n=== INVENTORY ===");
+            if (Inventory.Count == 0)
+            {
+                Console.WriteLine("\nInventory is empty.\n");
+                Console.WriteLine("=================");
+                return;
+            }
+
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                Console.WriteLine($"{i + 1} - {Inventory[i].Name}");
+            }
+        }
+
+        public void UseItem()
+        {
+            if (Inventory.Count == 0)
+            {
+                Console.WriteLine("\nNo items to use.");
+                return;
+            }
+
+            ShowInventory();
+            Console.Write("\nChoose item number: ");
+            int opt = int.Parse(Console.ReadLine());
+
+            if (opt-1 >= 0 && opt - 1 < Inventory.Count)
+            {
+                Inventory[opt - 1].UseItem(this);
+                Inventory.RemoveAt(opt - 1);
+            }
         }
 
         public bool IsAlive()

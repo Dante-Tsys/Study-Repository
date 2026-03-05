@@ -9,6 +9,7 @@ namespace TextRPG
 {
     internal class Program
     {
+        static Random random = new Random(); //Static Class to generate random numbers, doesn't need an instance
         static void Main(string[] args)
         {
             Console.WriteLine("=== Text RPG ===");
@@ -35,15 +36,19 @@ namespace TextRPG
                 switch (opt)
                 {
                     case 1:
+                        Console.Clear();
                         Explore(player);
                         break;
                     case 2:
+                        Console.Clear();
                         player.Rest();
                         break;
                     case 3:
+                        Console.Clear();
                         player.ShowStats();
                         break;
                     case 4:
+                        Console.Clear();
                         Console.WriteLine("Farewell, adventurer.");
                         break;
                     default:
@@ -61,8 +66,6 @@ namespace TextRPG
                 Console.ReadKey();
             }
         }
-
-        static Random random = new Random(); //Static Class to generate random numbers, doesn't need an instance
 
         static void Explore(Player player)
         {
@@ -87,7 +90,8 @@ namespace TextRPG
             while (player.IsAlive() && enemy.IsAlive())
             {
                 Console.WriteLine("\n1 - Attack");
-                Console.WriteLine("2 - Do Nothing");
+                Console.WriteLine("2 - Use item");
+                Console.WriteLine("3 - Do Nothing");
                 Console.Write("-> ");
                 int opt = int.Parse(Console.ReadLine());
 
@@ -97,6 +101,9 @@ namespace TextRPG
                         player.AttackEnemy(enemy);
                         break;
                     case 2:
+                        player.UseItem();
+                        break;
+                    case 3:
                         Console.WriteLine($"\n{player.Name} hesitates...");
                         break;
                     default:
@@ -108,8 +115,16 @@ namespace TextRPG
 
             if (player.IsAlive())
             {
+                Console.Clear();
                 Console.WriteLine($"\nYou defeated the {enemy.Name}!");
                 player.GainXP(enemy.XPReward);
+
+                if (random.Next(1, 101) >= 50)
+                {
+                    Item potion = new Item("Health Potion", 30);
+                    player.Inventory.Add(potion);
+                    Console.WriteLine("The enemy dropped a Health Potion!");
+                }
             }
         }
 
