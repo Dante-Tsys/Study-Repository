@@ -112,7 +112,7 @@ namespace TextRPG
         {
             if (Inventory.Count == 0)
             {
-                Console.WriteLine("\nNo items to use.");
+                Console.WriteLine("\nNo items to use.\n");
                 return;
             }
 
