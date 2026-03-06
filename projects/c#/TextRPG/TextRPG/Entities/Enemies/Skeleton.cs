@@ -16,7 +16,7 @@ namespace TextRPG
         {
             int damage = random.Next(Attack - 2, Attack + 3);
 
-            Console.WriteLine($"{Name} slashes {player.Name} for {damage} damage!");
+            Console.WriteLine($"\n{Name} slashes {player.Name} for {damage} damage!");
             player.TakeDamage(damage);
 
             int steal = random.Next(1, 101);

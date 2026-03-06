@@ -20,7 +20,7 @@ namespace TextRPG
             {
                 int damage = Attack * 2;
 
-                Console.WriteLine($"{Name} performs a HEAVY ATTACK!");
+                Console.WriteLine($"\n{Name} performs a HEAVY ATTACK!");
                 Console.WriteLine($"{Name} deals {damage} damage!");
 
                 player.TakeDamage(damage);

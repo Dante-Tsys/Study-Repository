@@ -11,6 +11,8 @@ namespace TextRPG
         public string Name;
         public int Health, MaxHealth, Attack; //Base status
         public int Level, XP, XPGoal; //Level status
+        public Weapon EquippedWeapon;
+        public Armor EquippedArmor;
 
         public Random random = new Random(); //Random method
         public List<Item> Inventory = new List<Item>(); //Inventory list
@@ -85,9 +87,11 @@ namespace TextRPG
         {
             Console.WriteLine("\n=== Player Stats ===");
             Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Weapon: {(EquippedWeapon?.Name?? "None")}");
+            Console.WriteLine($"Armor: {(EquippedArmor?.Name ?? "None")}");
             Console.WriteLine($"Level: {Level}");
-            Console.WriteLine($"XP: {XP}");
-            Console.WriteLine($"Health: {Health}");
+            Console.WriteLine($"XP: {XP}/{XPGoal}");
+            Console.WriteLine($"Health: {Health}/{MaxHealth}");
             Console.WriteLine($"Attack: {Attack}");
             Console.WriteLine($"====================");
         }
@@ -125,6 +129,27 @@ namespace TextRPG
                 Inventory[opt - 1].UseItem(this);
                 Inventory.RemoveAt(opt - 1);
             }
+        }
+
+        public void EquipWeapon(Weapon weapon)
+        {
+            EquippedWeapon = weapon;
+
+            Attack += weapon.AttackBonus;
+
+            Console.WriteLine($"\nEquipped weapon: {weapon.Name}");
+            Console.WriteLine($"Attack increased by {weapon.AttackBonus}");
+        }
+
+        public void EquipArmor(Armor armor)
+        {
+            EquippedArmor = armor;
+
+            MaxHealth += armor.HealthBonus;
+            Health += armor.HealthBonus;
+
+            Console.WriteLine($"\nEquipped armor: {armor.Name}");
+            Console.WriteLine($"Max Health increased by {armor.HealthBonus}");
         }
 
         public bool IsAlive()

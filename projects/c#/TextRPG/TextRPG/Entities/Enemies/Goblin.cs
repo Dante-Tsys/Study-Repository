@@ -18,7 +18,7 @@ namespace TextRPG
 
             if (dodge <= 20)
             {
-                Console.WriteLine($"{Name} quickly strike!");
+                Console.WriteLine($"\n{Name} quickly strike!");
 
                 int damage = Attack;
                 player.TakeDamage(damage);
