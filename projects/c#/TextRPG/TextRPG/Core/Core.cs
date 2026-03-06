@@ -119,11 +119,25 @@ namespace TextRPG
                 Console.WriteLine($"\nYou defeated the {enemy.Name}!");
                 player.GainXP(enemy.XPReward);
 
+                if (random.Next(1, 101) <= 20)
+                {
+                    Weapon sword = new Weapon("Iron Sword", 5);
+                        player.Inventory.Add(sword);
+                    Console.WriteLine("\nYou found and Iron Sword!");
+                }
+
+                if (random.Next(1, 101) <= 25)
+                {
+                    Armor armor = new Armor("Leather Armor", 20);
+                        player.Inventory.Add(armor);
+                    Console.WriteLine("\nYou found a Leather Armor!");
+                }
+
                 if (random.Next(1, 101) >= 50)
                 {
-                    Item potion = new Item("Health Potion", 30);
+                    Item potion = new Potion("Health Potion", 30);
                     player.Inventory.Add(potion);
-                    Console.WriteLine("The enemy dropped a Health Potion!");
+                    Console.WriteLine("\nThe enemy dropped a Health Potion!");
                 }
             }
         }
